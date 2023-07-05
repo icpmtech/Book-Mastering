@@ -1,3 +1,9 @@
+using Book_Guide_MVC.DAL;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
+using Microsoft.OpenApi.Models;
+
 namespace Book_Guide_MVC
 {
     public class Program
@@ -6,9 +12,32 @@ namespace Book_Guide_MVC
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
+            
+            // Add EF services to the services container.
+            builder.Services.AddDbContext<BookDbContext>(
+        options => options.UseSqlServer("name=ConnectionStrings:DefaultConnection"));
             builder.Services.AddControllersWithViews();
-
+            builder.Services.AddEndpointsApiExplorer();
+            builder.Services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1",
+                    new OpenApiInfo
+                    {
+                        Title = "API",
+                        Description = "API  .NET 7 + Minimum APIs",
+                        Version = "v1",
+                        Contact = new OpenApiContact()
+                        {
+                            Name = "Cantinho de .net",
+                            Url = new Uri("https://cantinhode.net"),
+                        },
+                        License = new OpenApiLicense()
+                        {
+                            Name = "MIT",
+                            Url = new Uri("http://opensource.org/licenses/MIT"),
+                        }
+                    });
+            });
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -18,7 +47,11 @@ namespace Book_Guide_MVC
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "APITemperaturas v1");
+            });
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
