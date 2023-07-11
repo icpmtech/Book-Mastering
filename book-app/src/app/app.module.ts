@@ -7,10 +7,13 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { RouterModule,Routes } from '@angular/router';
 import { UserComponent } from './user/user.component';
+import { ProfileComponent } from './profile/profile.component';
+import AuthGuard from './auth-guard.guard';
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'about', component: AboutComponent },
-  { path: 'user/:id', component: UserComponent },
+  { path: 'profile', component: ProfileComponent },
+  { path: 'user/:id', component: UserComponent,canActivate: [AuthGuard] },
 ];
 @NgModule({
   declarations: [
@@ -18,7 +21,8 @@ const routes: Routes = [
     MyComponentComponent,
     HomeComponent,
     AboutComponent,
-    UserComponent
+    UserComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
