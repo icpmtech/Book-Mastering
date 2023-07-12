@@ -1,35 +1,41 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TuiDialogModule, TuiNotificationModule, TuiRootModule } from '@taiga-ui/core';
 
-import { AppComponent } from './app.component';
-import { MyComponentComponent } from './my-component/my-component.component';
-import { HomeComponent } from './home/home.component';
-import { AboutComponent } from './about/about.component';
-import { RouterModule,Routes } from '@angular/router';
-import { UserComponent } from './user/user.component';
-import { ProfileComponent } from './profile/profile.component';
-import AuthGuard from './auth-guard.guard';
-const routes: Routes = [
-  { path: 'home', component: HomeComponent },
-  { path: 'about', component: AboutComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'user/:id', component: UserComponent,canActivate: [AuthGuard] },
-];
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app/app.component';
+import { CoreModule } from './core/core.module';
+import { FooterModule } from './shared/ui/footer/footer.module';
+import { HeaderModule } from './shared/ui/header/header.module';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
+
 @NgModule({
-  declarations: [
-    AppComponent,
-    MyComponentComponent,
-    HomeComponent,
-    AboutComponent,
-    UserComponent,
-    ProfileComponent
-  ],
+  declarations: [AppComponent],
   imports: [
+    // Angular
     BrowserModule,
-    RouterModule.forRoot(routes)
+    BrowserAnimationsModule,
+
+    // Taiga UI
+    TuiRootModule,
+    TuiDialogModule,
+    TuiNotificationModule,
+
+    // Core
+    CoreModule,
+
+    // Application
+    AppRoutingModule,
+    HeaderModule,
+    FooterModule,
+    EffectsModule.forRoot([]),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
+    StoreRouterConnectingModule.forRoot(),
   ],
-  exports: [RouterModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
