@@ -5,6 +5,8 @@ import {
   faMediumM,
   faTwitter,
   faLinkedinIn,
+  faSquareYoutube,
+  faYoutube
 } from '@fortawesome/free-brands-svg-icons';
 import { faStar, faBook, faLink } from '@fortawesome/free-solid-svg-icons';
 
@@ -13,7 +15,7 @@ import { faStar, faBook, faLink } from '@fortawesome/free-solid-svg-icons';
   exports: [FontAwesomeModule],
 })
 export class IconModule {
-  private icons = [faGithub, faMediumM, faTwitter, faLinkedinIn, faStar, faBook, faLink];
+  private icons = [faSquareYoutube,faGithub, faMediumM, faTwitter, faLinkedinIn,faYoutube, faStar, faBook, faLink];
 
   constructor(faIconLibrary: FaIconLibrary) {
     faIconLibrary.addIcons(...this.icons);

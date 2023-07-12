@@ -13,6 +13,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [AppComponent],
@@ -37,7 +38,13 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     StoreRouterConnectingModule.forRoot(),
     FontAwesomeModule,
-      TuiAlertModule
+      TuiAlertModule,
+      ServiceWorkerModule.register('ngsw-worker.js', {
+        enabled: !isDevMode(),
+        // Register the ServiceWorker as soon as the application is stable
+        // or after 30 seconds (whichever comes first).
+        registrationStrategy: 'registerWhenStable:30000'
+      })
 ],
   providers: [{provide: TUI_SANITIZER, useClass: NgDompurifySanitizer}],
   bootstrap: [AppComponent],
