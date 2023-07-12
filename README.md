@@ -30,7 +30,7 @@ Live application:
 ### Setup & Usage
 
 - Clone this repository: `https://github.com/icpmtech/Book-Unleashing.git`
-- `cd angular-authentication`
+- `cd book-app`
 - Install dependencies: `npm install`
 - Serve the Angular app: `npm start`
 - Open your browser at: `http://localhost:4200`
