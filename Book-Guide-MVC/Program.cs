@@ -50,7 +50,7 @@ namespace Book_Guide_MVC
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "APITemperaturas v1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "API Book Helper v1");
             });
             app.UseHttpsRedirection();
             app.UseStaticFiles();
