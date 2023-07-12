@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "wyenASc1CHR2No5GyinOLm6x5dfqOzMHbQl6QGVnTZ/F3Cj43i1SMhdENaBohxhsAjF/zIDXOIV1ZVkg0eKMrA==",
+  "dgSpecHash": "+ea3VpKOMPYB8OIQBuUYx8aDsV+aZqaFShtLOJkLQzjx3rCUpOmJzOX4g+oEw2n8chBeUwAgqHrNn83BPXDUCw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\pedro.mourao.martins\\Source\\Repos\\Book-Unleashing\\Book-Guide-MVC\\Book-Guide-MVC.csproj",
+  "projectFilePath": "C:\\Users\\pedro.mourao.martins\\source\\repos\\Book-Unleashing\\Book-Guide-MVC\\Book-Guide-MVC.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\pedro.mourao.martins\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\pedro.mourao.martins\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
