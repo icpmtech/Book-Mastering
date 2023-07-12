@@ -33,7 +33,7 @@ export class AuthEffects {
       map(() => {
         // redirect to return url or home
         this.router.navigateByUrl(
-          this.activatedRoute.snapshot.queryParams.returnUrl || '/'
+          this.activatedRoute.snapshot.queryParams['returnUrl'] || '/'
         );
         return AuthActions.getAuthUserRequest();
       })

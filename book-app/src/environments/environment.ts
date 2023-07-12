@@ -2,11 +2,11 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-const { version } = require('../../package.json');
+
 
 export const environment = {
   production: false,
-  appVersion: `${version}-dev`,
+  appVersion: `001-dev`,
 
   // Replace this with your server API URL
   // We assigned it to empty string for the Fake API

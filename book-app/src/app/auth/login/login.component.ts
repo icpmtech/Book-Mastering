@@ -23,7 +23,8 @@ export class LoginComponent {
   constructor(private authFacade: AuthFacade) {}
 
   submit() {
-    const { username, password } = this.loginForm.value;
+    const  password  = this.loginForm.value.password;
+    const  username=this.loginForm.value.username;
     this.authFacade.login(username, password);
   }
 }

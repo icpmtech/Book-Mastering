@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { AuthFacade } from '../../../auth/store/auth.facade';
 
 @Component({
-  selector: 'aa-header',
+  selector: 'book-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })

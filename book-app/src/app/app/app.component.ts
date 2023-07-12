@@ -5,7 +5,7 @@ import { filter } from 'rxjs';
 import { ConfigService, GoogleAnalyticsService } from '../core/services';
 
 @Component({
-  selector: 'aa-root',
+  selector: 'book-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   encapsulation: ViewEncapsulation.None,

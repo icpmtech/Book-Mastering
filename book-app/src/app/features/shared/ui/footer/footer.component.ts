@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { ConfigService } from '../../../core/services';
+import { ConfigService } from '../../../../core/services';
 
 @Component({
   selector: 'aa-footer',
