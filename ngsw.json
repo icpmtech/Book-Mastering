@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1689254332284,
+  "timestamp": 1689254853646,
   "index": "https://icpmtech.github.io/Book-Unleashing/index.html",
   "assetGroups": [
     {
@@ -1920,7 +1920,7 @@
     "https://icpmtech.github.io/Book-Unleashing/assets/taiga-ui/icons/tuiIconZoomOut.svg": "f888a1c4da85c9954edb33a319f7936b1edb2ce8",
     "https://icpmtech.github.io/Book-Unleashing/assets/taiga-ui/icons/tuiIconZoomOutLarge.svg": "d613bf626b2bce958ebf71e3c6cf0d2ed0b8a518",
     "https://icpmtech.github.io/Book-Unleashing/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "https://icpmtech.github.io/Book-Unleashing/index.html": "dd5736cd70d2c4da57b34025fe2358bc4c5c74ff",
+    "https://icpmtech.github.io/Book-Unleashing/index.html": "418528e88584ace87cdb85823b504d5f6371b65e",
     "https://icpmtech.github.io/Book-Unleashing/main.ff22487e723dc5e1.js": "0c96ea3fa118e363af8efead13b30f4a1bfd4598",
     "https://icpmtech.github.io/Book-Unleashing/manifest.webmanifest": "850517ce0063e40a73c46a6f979f07140d6b2670",
     "https://icpmtech.github.io/Book-Unleashing/polyfills.7f46f2bb3d061e89.js": "3ae61e686e7afb191d100a0454377257bcd0116a",
