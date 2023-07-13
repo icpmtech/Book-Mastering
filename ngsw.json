@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1689250785969,
+  "timestamp": 1689253093353,
   "index": "https://icpmtech.github.io/Book-Unleashing/index.html",
   "assetGroups": [
     {
@@ -12,14 +12,14 @@
       },
       "urls": [
         "https://icpmtech.github.io/Book-Unleashing/173.bef00de326afe139.js",
-        "https://icpmtech.github.io/Book-Unleashing/731.262d0dcc531de1a1.js",
+        "https://icpmtech.github.io/Book-Unleashing/731.98cdb92f51a0d0db.js",
         "https://icpmtech.github.io/Book-Unleashing/830.e928e8a25aa4120a.js",
         "https://icpmtech.github.io/Book-Unleashing/favicon.ico",
         "https://icpmtech.github.io/Book-Unleashing/index.html",
         "https://icpmtech.github.io/Book-Unleashing/main.ff22487e723dc5e1.js",
         "https://icpmtech.github.io/Book-Unleashing/manifest.webmanifest",
         "https://icpmtech.github.io/Book-Unleashing/polyfills.7f46f2bb3d061e89.js",
-        "https://icpmtech.github.io/Book-Unleashing/runtime.846a87a7682561df.js",
+        "https://icpmtech.github.io/Book-Unleashing/runtime.039ec8f58114bbd6.js",
         "https://icpmtech.github.io/Book-Unleashing/styles.97321018e312e03e.css"
       ],
       "patterns": []
@@ -41,6 +41,7 @@
         "https://icpmtech.github.io/Book-Unleashing/assets/icons/icon-512x512.png",
         "https://icpmtech.github.io/Book-Unleashing/assets/icons/icon-72x72.png",
         "https://icpmtech.github.io/Book-Unleashing/assets/icons/icon-96x96.png",
+        "https://icpmtech.github.io/Book-Unleashing/assets/images/banner_cantinho.png",
         "https://icpmtech.github.io/Book-Unleashing/assets/logo.svg",
         "https://icpmtech.github.io/Book-Unleashing/assets/ng-auth.png",
         "https://icpmtech.github.io/Book-Unleashing/assets/security.svg",
@@ -977,7 +978,7 @@
   "dataGroups": [],
   "hashTable": {
     "https://icpmtech.github.io/Book-Unleashing/173.bef00de326afe139.js": "9aef9497210b8dae09272a00a107cd34841035cb",
-    "https://icpmtech.github.io/Book-Unleashing/731.262d0dcc531de1a1.js": "e46a4f36fc16b11ba93b9b91a8ecc33a9d937be2",
+    "https://icpmtech.github.io/Book-Unleashing/731.98cdb92f51a0d0db.js": "98328a5a0f09e650b4e8976c4bb014807894b9f8",
     "https://icpmtech.github.io/Book-Unleashing/830.e928e8a25aa4120a.js": "6d657f8a910438a7f09f0e6bc97db0609039798d",
     "https://icpmtech.github.io/Book-Unleashing/assets/OneSignalSDKWorker.js": "2a04201028527d0db7532997f5c51de0291d5b6f",
     "https://icpmtech.github.io/Book-Unleashing/assets/icons/icon-128x128.png": "b1f06c7d714abb4a0cc4d1f7c954feb26826e4c4",
@@ -988,6 +989,7 @@
     "https://icpmtech.github.io/Book-Unleashing/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
     "https://icpmtech.github.io/Book-Unleashing/assets/icons/icon-72x72.png": "279825a1ac4377032ae996a1832c641e33ccf1b6",
     "https://icpmtech.github.io/Book-Unleashing/assets/icons/icon-96x96.png": "592885efcbfee27e5e20be4fa3043589390d2740",
+    "https://icpmtech.github.io/Book-Unleashing/assets/images/banner_cantinho.png": "d8a0e251117a8aa5b332d10282f95ec4c4dea390",
     "https://icpmtech.github.io/Book-Unleashing/assets/logo.svg": "7f10bc59e5de187e011a79eaadeb6be6ef097de7",
     "https://icpmtech.github.io/Book-Unleashing/assets/ng-auth.png": "fdee166f9edd11a1fcb229d12ce0c17cbdf2a587",
     "https://icpmtech.github.io/Book-Unleashing/assets/security.svg": "d3890f32ddf875846d0d5fa2982bde1eec427989",
@@ -1918,11 +1920,11 @@
     "https://icpmtech.github.io/Book-Unleashing/assets/taiga-ui/icons/tuiIconZoomOut.svg": "f888a1c4da85c9954edb33a319f7936b1edb2ce8",
     "https://icpmtech.github.io/Book-Unleashing/assets/taiga-ui/icons/tuiIconZoomOutLarge.svg": "d613bf626b2bce958ebf71e3c6cf0d2ed0b8a518",
     "https://icpmtech.github.io/Book-Unleashing/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "https://icpmtech.github.io/Book-Unleashing/index.html": "bcae447f8aba143e1cadda848b416c4120a54718",
+    "https://icpmtech.github.io/Book-Unleashing/index.html": "1fc12c3c393dc813f3a767bf9a4d3f060406d593",
     "https://icpmtech.github.io/Book-Unleashing/main.ff22487e723dc5e1.js": "0c96ea3fa118e363af8efead13b30f4a1bfd4598",
     "https://icpmtech.github.io/Book-Unleashing/manifest.webmanifest": "850517ce0063e40a73c46a6f979f07140d6b2670",
     "https://icpmtech.github.io/Book-Unleashing/polyfills.7f46f2bb3d061e89.js": "3ae61e686e7afb191d100a0454377257bcd0116a",
-    "https://icpmtech.github.io/Book-Unleashing/runtime.846a87a7682561df.js": "a3f697f6440ea1a18ebfdbab7bd54a4f802aa835",
+    "https://icpmtech.github.io/Book-Unleashing/runtime.039ec8f58114bbd6.js": "cbe9975e31d0050c4eec1a028ef6ad46fdf4f5a8",
     "https://icpmtech.github.io/Book-Unleashing/styles.97321018e312e03e.css": "76d590d263f130863378162da8e7a8351f9f1cc3"
   },
   "navigationUrls": [
