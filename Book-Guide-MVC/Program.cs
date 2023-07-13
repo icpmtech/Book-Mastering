@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
+using Book_Guide_MVC.Services;
 
 namespace Book_Guide_MVC
 {
@@ -52,6 +53,12 @@ namespace Book_Guide_MVC
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "API Book Helper v1");
             });
+
+                        if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+};
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
@@ -62,6 +69,14 @@ namespace Book_Guide_MVC
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                        app.MapBookChaptersModelEndpoints();
+
+                        app.MapBookSectionsModelEndpoints();
+
+                        app.MapBookModelEndpoints();
+
+                        app.MapBookTitleModelEndpoints();
 
             app.Run();
         }

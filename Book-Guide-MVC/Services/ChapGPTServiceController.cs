@@ -19,14 +19,63 @@ namespace Book_Guide_MVC.Services
             _logger = logger;
         }
 
-
         // GET: api/<ChapGPTServiceController>
+        /// <summary>
+        /// Get Chapters to Books
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
-        public async Task<string> GetAsync()
+        [Route("GetChaptersSections")]
+        public async Task<string> GetChaptersSectionsAsync(string question)
         {
             try
             {
-              return  await CallChatGPTExternalAPI();
+                return await CallChatGPTExternalAPI(question);
+            }
+
+
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while making the OpenAI API request");
+
+            }
+            return null;
+        }
+        // GET: api/<ChapGPTServiceController>
+        /// <summary>
+        /// Get Chapters to Books
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("GetChapters")]
+        public async Task<string> GetChaptersAsync(string question)
+        {
+            try
+            {
+                return await CallChatGPTExternalAPI(question);
+            }
+
+
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while making the OpenAI API request");
+
+            }
+            return null;
+        }
+
+        // GET: api/<ChapGPTServiceController>
+        /// <summary>
+        /// Get Titles to Books
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("GetTitles")]
+        public async Task<string> GetTitlesAsync(string question)
+        {
+            try
+            {
+              return  await CallChatGPTExternalAPI(question);
             }
 
 
@@ -38,7 +87,7 @@ namespace Book_Guide_MVC.Services
             return null;
         }
 
-        private async Task<string> CallChatGPTExternalAPI()
+        private async Task<string> CallChatGPTExternalAPI(string question)
         {
             HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "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");
@@ -46,7 +95,7 @@ namespace Book_Guide_MVC.Services
             var request = new OpenAIRequest
             {
                 Model = "text-davinci-002",
-                Prompt = generatePrompt($"Name my DOG"), //$"Name my {AnimalInput}",
+                Prompt = question, 
                 Temperature = 0.7f,
                 MaxTokens = 50
             };
@@ -65,18 +114,7 @@ namespace Book_Guide_MVC.Services
            return data.choices[0].text;
         }
 
-        private string generatePrompt(string animal)
-        {
-            var capitalizedAnimal = animal.Trim();
-            return "Suggest three names for an animal that is a superhero." +
-                    "Animal: Cat" +
-                    "Names: Captain Sharpclaw, Agent Fluffball, The Incredible Feline" +
-                    "Animal: Dog" +
-                    "Names: Ruff the Protector, Wonder Canine, Sir Barks - a - Lot" +
-                    "Animal: " + capitalizedAnimal + " " +
-                    "Names:";
-        }
-    }
+      }
 
 
 
