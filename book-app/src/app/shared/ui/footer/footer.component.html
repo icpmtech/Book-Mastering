@@ -1,0 +1,26 @@
+<footer class="book--grid book--grid-cols-1 book--gap-4 md:book--grid-cols-2">
+    <div class="book--text-center md:book--text-left">
+        <p class="book--font-semibold">
+            © {{ now | date: 'YYYY' }} - Made with ❤️&nbsp; & ☕️&nbsp; by cantinhode.net
+        </p>
+        <p>Version: {{ version }}</p>
+    </div>
+
+    <div class="links book--text-center md:book--text-right">
+        <a tuiLink href="https://github.com/icpmtech/Book-Unleashing" target="_blank" rel="noopener noreferrer">
+            <fa-icon [icon]="['fab', 'github']"></fa-icon>
+            <span>Github</span>
+        </a>
+        <a tuiLink href="https://www.youtube.com/@CantinhodoNET" target="_blank" rel="noopener noreferrer">
+            <span>Youtube</span>
+        </a>
+        <a tuiLink href="https://twitter.com/@miguelrox1999" target="_blank" rel="noopener noreferrer">
+            <fa-icon [icon]="['fab', 'twitter']"></fa-icon>
+            <span>Twitter</span>
+        </a>
+        <a tuiLink href="https://www.linkedin.com/in/pedromiguelmouraomartins/" target="_blank" rel="noopener noreferrer">
+            <fa-icon [icon]="['fab', 'linkedin-in']"></fa-icon>
+            <span>LinkedIn</span>
+        </a>
+    </div>
+</footer>
