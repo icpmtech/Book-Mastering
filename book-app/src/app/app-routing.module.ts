@@ -18,6 +18,10 @@ const routes: Routes = [
     loadChildren: () => import('./features/about/about.module').then(m => m.AboutModule),
   },
   {
+    path: 'books',
+    loadChildren: () => import('./book/book.module').then(m => m.BookModule),
+  },
+  {
     path: 'secured-feat',
     canActivate: [AuthGuardService],
     loadChildren: () =>
