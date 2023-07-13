@@ -6,7 +6,9 @@
         "start": "ng serve",
         "build": "ng build",
         "watch": "ng build --watch --configuration development",
-        "test": "ng test"
+        "test": "ng test",
+        "predeploy": "ng build --prod --base-href=/book-app/",
+        "deploy": "npx gh-pages -d dist/book-app"
     },
     "private": true,
     "dependencies": {
@@ -59,6 +61,7 @@
         "@types/dompurify": "2.2.3",
         "@types/jasmine": "~4.3.0",
         "@types/node": "^20.4.1",
+        "gh-pages": "^5.0.0",
         "jasmine-core": "~4.6.0",
         "karma": "~6.4.0",
         "karma-chrome-launcher": "~3.2.0",
