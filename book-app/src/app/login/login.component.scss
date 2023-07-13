@@ -1,0 +1,8 @@
+.form-wrapper {
+    @apply book--mt-10 book--w-10/12 md: book--w-1/2;
+    form {
+        background-color: white;
+        box-shadow: 0 0.125rem 1rem rgb(0 0 0 / 8%);
+        @apply book--mt-4 book--rounded-lg book--p-8;
+    }
+}

@@ -1,0 +1,67 @@
+<!-- BEGIN: Main banner -->
+<section>
+    <div class="book--grid book--grid-cols-1 book--gap-4 md:book--grid-cols-2">
+        <!-- Left -->
+        <div class="book--flex book--flex-col book--justify-center book--text-center md:book--text-left">
+            <h1>Angular v16 <span class="book--text-primary">BookHelper</span></h1>
+            <p class="book--py-5 book--text-xl lg:book--py-3 lg:book--text-2xl">
+                An <span class="book--text-primary">Angular</span> application that demonstrates best practices for use
+                <span class="book--text-primary">Integration with Asp.net Core 7.0 Rest WebAPI</span> & PWA Concepts in Angular .
+            </p>
+            <p class="book--py-5 book--text-xl lg:book--py-3 lg:book--text-2xl">
+
+            </p>
+            <div class="book--mt-4">
+                <a tuiButton [appearance]="'primary'" href="https://github.com/icpmtech/Book-Unleashing/tree/main/book-app" target="_blank" rel="noopener noreferrer">
+          Source Code
+          <fa-icon [icon]="['fab', 'github']" class="book--ml-2"></fa-icon>
+        </a>
+            </div>
+        </div>
+
+        <!-- Right -->
+        <div class="book--grid book--place-items-center">
+            <img src="/assets/images/banner.png" class="book--w-2/3" alt="BookHelper" />
+        </div>
+    </div>
+</section>
+<!-- END: Main banner -->
+
+<!-- BEGIN: Features -->
+<section>
+    <h2 class="book--text-center">Features</h2>
+    <p class="subtitle book--text-center">
+        This repository uses state-of-the-art features for web development.
+    </p>
+
+    <div class="book--grid book--grid-cols-1 book--gap-8 md:book--grid-cols-3 lg:book--grid-cols-4">
+        <div *ngFor="let feature of features" class="card">
+            <div class="card-header">
+                <tui-avatar [text]="feature.name" [autoColor]="true" size="s" [rounded]="true" class="book--mr-2"></tui-avatar>
+                <div class="card-title">{{ feature.name }}</div>
+            </div>
+            <div class="card-content">
+                <p class="book--text-gray-600">{{ feature.description }}</p>
+
+                <div class="book--mt-6 book--flex book--text-lg">
+                    <a *ngIf="feature.link" tuiLink tuiHint="Link" [href]="feature.link" target="_blank" rel="noopener noreferrer" class="book--mr-4">
+                        <fa-icon icon="link"></fa-icon>
+                    </a>
+                    <a *ngIf="feature.github" tuiLink tuiHint="Github" [href]="feature.github" target="_blank" rel="noopener noreferrer" class="book--mr-4">
+                        <fa-icon [icon]="['fab', 'github']"></fa-icon>
+                    </a>
+                    <a *ngIf="feature.docs" tuiLink [href]="feature.docs" tuiHint="Documentation" target="_blank" rel="noopener noreferrer" class="book--mr-4">
+                        <fa-icon icon="book"></fa-icon>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="book--mt-6 book--flex book--justify-center">
+        <button tuiButton appearance="secondary" (click)="showAllFeatures = !showAllFeatures">
+      Show {{ showAllFeatures ? 'less' : 'more' }}
+    </button>
+    </div>
+</section>
+<!-- END: Features -->

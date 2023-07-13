@@ -5,6 +5,9 @@ using System.Diagnostics;
 
 namespace Book_Guide_MVC.Controllers
 {
+    /// <summary>
+    /// Chat GPT API
+    /// </summary>
     public class ChatGptController : Controller
     {
         private readonly ILogger<HomeController> _logger;
