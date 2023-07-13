@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\pedro.mourao.martins\\source\\repos\\Book-Unleashing\\Book-Guide-MVC\\wwwroot\\images\\BookHelperArchitecture.JPG",
+      "PackagePath": "staticwebassets\\images\\BookHelperArchitecture.JPG"
+    },
+    {
       "Id": "C:\\Users\\pedro.mourao.martins\\source\\repos\\Book-Unleashing\\Book-Guide-MVC\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
