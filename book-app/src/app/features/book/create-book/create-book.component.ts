@@ -37,6 +37,7 @@ class Book {
 ],
 })
 export class CreateBookComponent {
+  values: any;
 
   /**
    *
@@ -67,10 +68,24 @@ bookForm = new FormGroup({
   title: new FormControl(``, Validators.required),
   
 });
-question: any;
 submit() {
-  const  question  = this.bookForm.value.title;
-   const res= this.bookService.getTitles(question);
+  const  question  = this.bookForm.value.title as string;
+  this.bookService.getTitles(question)
+  .subscribe(
+    (response: any) => {                           //next() callback
+      console.log('response received')
+      this.values = response; 
+      alert(JSON.stringify(response));
+      console.log(response);
+    },
+    (error: any) => {                              //error() callback
+      alert(JSON.stringify(error));
+      
+    },
+    () => {                                   //complete() callback
+      alert("complete");      //This is actually not needed 
+      
+    })
 }
 
 }

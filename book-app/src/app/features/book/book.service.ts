@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 class Book {
@@ -12,18 +12,15 @@ class Book {
 })
 export class BookService {
 
-pathAPI = "https://localhost:44394/api/BookModel";
-list: any[] | undefined ;
+pathAPI = "https://localhost:44394/api/ChapGPTService/GetTitles";
+list: any | undefined ;
 constructor( private http: HttpClient ) {
 }
-  getTitles (body: any): any {
+  getTitles (question: any): Observable<any> {
    
-    this.http.get(this.pathAPI)
-    .toPromise()
-    .then(res => {
-      debugger;
-      this.list = res as any[];
-    });
+    let queryParams = new HttpParams();
+    queryParams = queryParams.append("question",question);
+    return this.http.get(this.pathAPI,{params:queryParams,responseType: 'text'})
      
     
   }
