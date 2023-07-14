@@ -13,30 +13,5 @@
 
     }
 
-    public class BookTitleModel
-    {
-        public int Id { get; set; }
-        public string Title { get; set; }
-
-
-    }
-
-    public class BookChaptersModel
-    {
-        public BookTitleModel titleModel { get; set; }
-        public int Id { get; set; }
-        public string Title { get; set; }
-        public string Body { get; set; }
-        IList<BookSectionsModel>? sections { get; set; }
-
-        
-    }
-    public class BookSectionsModel
-    {
-        public int Id { get; set; }
-        public string Title { get; set; }
-        public string Body { get; set; }
-    }
-
 
 }
