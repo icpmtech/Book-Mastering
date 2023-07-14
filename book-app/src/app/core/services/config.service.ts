@@ -6,6 +6,9 @@ type AppEnv = typeof environment;
 
 @Injectable({ providedIn: 'root' })
 export class ConfigService {
+  getbookSettings() {
+    throw new Error('Method not implemented.');
+  }
   /**
    * Returns environment config of application
    */
