@@ -4,6 +4,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using Book_Guide_MVC.Services;
+using Microsoft.CodeAnalysis.Options;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.CodeAnalysis;
 
 namespace Book_Guide_MVC
 {
@@ -13,7 +17,17 @@ namespace Book_Guide_MVC
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            
+            builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme,
+        options => builder.Configuration.Bind("JwtSettings", options))
+    .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme,
+        options => { options.AccessDeniedPath = "api/denied";
+            options.LoginPath = "api/login";
+            builder.Configuration.Bind("CookieSettings", options);
+        });
+           
+
+           
             // Add EF services to the services container.
             builder.Services.AddDbContext<BookDbContext>(
         options => options.UseSqlServer("name=ConnectionStrings:DefaultConnection"));
@@ -38,6 +52,31 @@ namespace Book_Guide_MVC
                             Url = new Uri("http://opensource.org/licenses/MIT"),
                         }
                     });
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    In = ParameterLocation.Header,
+                    Description = "Please enter a valid token",
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.Http,
+                    BearerFormat = "JWT",
+                    Scheme = "Bearer"
+                });
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type=ReferenceType.SecurityScheme,
+                    Id="Bearer"
+                }
+            },
+            new string[]{}
+        }
+    });
+
+
             });
             var app = builder.Build();
 
@@ -65,7 +104,7 @@ namespace Book_Guide_MVC
             app.UseRouting();
 
             app.UseAuthorization();
-
+            app.UseAuthentication();
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");

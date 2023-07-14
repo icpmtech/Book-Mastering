@@ -3,10 +3,13 @@ using Book_Guide_MVC.DAL;
 using Book_Guide_MVC.DAL.Entities;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.OpenApi;
+using Microsoft.AspNetCore.Authorization;
+
 namespace Book_Guide_MVC.Services;
 
 public static class BookChaptersEndpoints
 {
+   
     public static void MapBookChaptersModelEndpoints (this IEndpointRouteBuilder routes)
     {
         var group = routes.MapGroup("/api/BookChaptersModel").WithTags(nameof(BookChaptersModel));
@@ -15,6 +18,7 @@ public static class BookChaptersEndpoints
         {
             return await db.BookChapters.ToListAsync();
         })
+        .RequireAuthorization( )
         .WithName("GetAllBookChaptersModels")
         .WithOpenApi();
 

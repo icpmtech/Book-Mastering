@@ -288,3 +288,4 @@ C:\Users\pedro.mourao.martins\Source\Repos\Book-Unleashing\Book-Guide-MVC\bin\De
 C:\Users\pedro.mourao.martins\Source\Repos\Book-Unleashing\Book-Guide-MVC\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
 C:\Users\pedro.mourao.martins\Source\Repos\Book-Unleashing\Book-Guide-MVC\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\pedro.mourao.martins\Source\Repos\Book-Unleashing\Book-Guide-MVC\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+C:\Users\pedro.mourao.martins\Source\Repos\Book-Unleashing\Book-Guide-MVC\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
