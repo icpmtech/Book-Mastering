@@ -13,21 +13,25 @@ namespace Book_Guide_MVC
 {
     public class Program
     {
+
+       
         public static void Main(string[] args)
         {
+             string CORSOpenPolicy = "OpenCORSPolicy";
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme,
         options => builder.Configuration.Bind("JwtSettings", options))
     .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme,
-        options => { options.AccessDeniedPath = "api/denied";
+        options => {
+            options.AccessDeniedPath = "api/denied";
             options.LoginPath = "api/login";
             builder.Configuration.Bind("CookieSettings", options);
         });
-           
 
-           
+
+
             // Add EF services to the services container.
             builder.Services.AddDbContext<BookDbContext>(
         options => options.UseSqlServer("name=ConnectionStrings:DefaultConnection"));
@@ -78,6 +82,17 @@ namespace Book_Guide_MVC
 
 
             });
+
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy(
+                  name: CORSOpenPolicy,
+                  builder => {
+                      builder.WithOrigins("*").AllowAnyHeader().AllowAnyMethod();
+                  });
+            });
+
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -93,29 +108,29 @@ namespace Book_Guide_MVC
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "API Book Helper v1");
             });
 
-                        if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-};
+            if (app.Environment.IsDevelopment())
+            {
+                app.UseSwagger();
+                app.UseSwaggerUI();
+            };
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseCors(CORSOpenPolicy);
             app.UseAuthorization();
             app.UseAuthentication();
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
 
-                        app.MapBookChaptersModelEndpoints();
+            app.MapBookChaptersModelEndpoints();
 
-                        app.MapBookSectionsModelEndpoints();
+            app.MapBookSectionsModelEndpoints();
 
-                        app.MapBookModelEndpoints();
+            app.MapBookModelEndpoints();
 
-                        app.MapBookTitleModelEndpoints();
+            app.MapBookTitleModelEndpoints();
 
             app.Run();
         }

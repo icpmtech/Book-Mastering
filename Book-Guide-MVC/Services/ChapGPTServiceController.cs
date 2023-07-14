@@ -90,7 +90,7 @@ namespace Book_Guide_MVC.Services
         private async Task<string> CallChatGPTExternalAPI(string question)
         {
             HttpClient client = new HttpClient();
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "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");
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "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");
 
             var request = new OpenAIRequest
             {
@@ -111,7 +111,13 @@ namespace Book_Guide_MVC.Services
             //var data = JsonSerializer.Deserialize<OpenAIResponse>(resjson);
             var data = JsonSerializer.Deserialize<Root>(resjson);
             //var data = JsonSerializer.Deserialize(resjson, typeof(object));
-           return data.choices[0].text;
+            StringBuilder sb=new StringBuilder();
+            foreach (var item in data.choices)
+            {
+                sb.AppendLine(item.text);
+            }
+          string results=  sb.ToString(); ;
+           return results;
         }
 
       }
