@@ -4,7 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthFacade } from '../store/auth.facade';
 
 @Component({
-  selector: 'aa-login',
+  selector: 'book-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })

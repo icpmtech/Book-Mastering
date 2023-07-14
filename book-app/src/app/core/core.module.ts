@@ -19,7 +19,7 @@ import { FakeApiService } from './fake-api';
     HttpClientModule,
 
     // Fake Auth API: Remove this in real apps
-    HttpClientInMemoryWebApiModule.forRoot(FakeApiService),
+   // HttpClientInMemoryWebApiModule.forRoot(FakeApiService),
 
     // NgRx
     StoreModule.forRoot({}, {}),

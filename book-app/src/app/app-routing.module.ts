@@ -27,6 +27,14 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'book',
+   // canActivate: [AuthGuardService],
+    loadChildren: () =>
+      import('./features/book/book.module').then(
+        m => m.BookModule
+      ),
+  },
+  {
     path: '**',
     redirectTo: 'home',
   },

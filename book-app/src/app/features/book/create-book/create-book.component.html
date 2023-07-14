@@ -1,1 +1,34 @@
-<p>create-book works!</p>
+<tui-breadcrumbs>
+    <ng-container *ngFor="let item of items">
+        <a *tuiItem tuiLink [routerLink]="item.routerLink">
+            {{ item.caption }}
+        </a>
+    </ng-container>
+</tui-breadcrumbs>
+<div class="tui-container">
+    <form [formGroup]="bookForm" (ngSubmit)="bookForm.valid && submit()">
+        <div class="tui-row tui-row_sme">
+            <div class="tui-col_8">
+                <h3 class="tui-form__header tui-form__header_margin-top_none">Book Title</h3>
+                <div class="tui-form__row">
+                    <tui-input formControlName="title" tuiHintContent="A tooltip">
+                        Ask titles
+                        <input tuiTextfield placeholder="Field placeholder" />
+                        <span class="tui-required"></span>
+                    </tui-input>
+                    <tui-error formControlName="title" [error]="[] | tuiFieldError | async"></tui-error>
+                </div>
+                <div class="tui-form__buttons">
+
+                    <button tuiButton size="l" type="submit" class="tui-form__button">
+                        Submit
+                    </button>
+                    <button tuiButton type="button" appearance="flat" size="l" class="tui-form__button">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <p>Value: {{ question }}</p>
+</div>

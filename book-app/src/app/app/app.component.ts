@@ -3,8 +3,6 @@ import { NavigationEnd, Router } from '@angular/router';
 import { filter, map } from 'rxjs';
 
 import { ConfigService, GoogleAnalyticsService } from '../core/services';
-import { SwUpdate, VersionReadyEvent } from '@angular/service-worker';
-import { Platform } from '@angular/cdk/platform';
 import { OneSignal } from 'onesignal-ngx';
 @Component({
   selector: 'book-root',
