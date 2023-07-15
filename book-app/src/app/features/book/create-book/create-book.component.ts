@@ -43,7 +43,7 @@ export class CreateBookComponent {
    *
    */
   constructor(private bookService:BookService) {
-   
+
 
   }
   items = [
@@ -55,8 +55,8 @@ export class CreateBookComponent {
       caption: 'Create Book',
       routerLink: '/book/create-books',
   },
-    
-    
+
+
 ];
 
 
@@ -64,9 +64,15 @@ books = [
   new Book(`title 1`),
 ];
 
+
+createBookForm = new FormGroup({
+  bookName: new FormControl(``, Validators.required),
+  bookTitle: new FormControl(``, Validators.required),
+
+});
 bookForm = new FormGroup({
   title: new FormControl(``, Validators.required),
-  
+
 });
 submit() {
   const  question  = this.bookForm.value.title as string;
@@ -74,18 +80,36 @@ submit() {
   .subscribe(
     (response: any) => {                           //next() callback
       console.log('response received')
-      this.values = response; 
+      this.values = response;
       alert(JSON.stringify(response));
       console.log(response);
     },
     (error: any) => {                              //error() callback
       alert(JSON.stringify(error));
-      
+
     },
     () => {                                   //complete() callback
-      alert("complete");      //This is actually not needed 
-      
+      alert("complete");      //This is actually not needed
+
     })
 }
+submitCreateBook() {
+  const  question  = this.bookForm.value.title as string;
+  this.bookService.getTitles(question)
+  .subscribe(
+    (response: any) => {                           //next() callback
+      console.log('response received')
+      this.values = response;
+      alert(JSON.stringify(response));
+      console.log(response);
+    },
+    (error: any) => {                              //error() callback
+      alert(JSON.stringify(error));
 
+    },
+    () => {                                   //complete() callback
+      alert("complete");      //This is actually not needed
+
+    })
+}
 }
