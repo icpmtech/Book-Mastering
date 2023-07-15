@@ -5,68 +5,74 @@
         </a>
     </ng-container>
 </tui-breadcrumbs>
-<div class="tui-container">
-  <div class="card shadow(4)">
-    <form [formGroup]="bookForm" (ngSubmit)="bookForm.valid && submit()">
-        <div class="tui-row tui-row_sme">
-            <div class="tui-col_8">
-                <h4 class="tui-form__header tui-form__header_margin-top_none">Suggestions of Titles to your Book</h4>
-                <div class="tui-form__row">
-                    <tui-input formControlName="title" tuiHintContent="A tooltip">
-                        Ask titles
-                        <input tuiTextfield placeholder="Field placeholder" />
-                        <span class="tui-required"></span>
-                    </tui-input>
-                    <tui-error formControlName="title" [error]="[] | tuiFieldError | async"></tui-error>
+<section>
+    <div class="tui-container">
+        <tui-accordion-item class="container">
+            <h4 class="tui-form__header tui-form__header_margin-top_none">Title Suggestions</h4>
+            <ng-template tuiAccordionItemContent>
+                <div class="card shadow(4)">
+                    <form [formGroup]="titeSuggestionsForm" (ngSubmit)="titeSuggestionsForm.valid && submitGetTitleSuggestions()">
+                        <div class="tui-row tui-row_sme">
+                            <div class="tui-col_8">
+                                <div class="tui-form__row">
+                                    <tui-input formControlName="title" tuiHintContent="Ex:Give me titles to Book about ASP.NET Core and Angular 16">
+                                        Give me titles to my Book about YOUR BOOK MATTER
+                                        <input tuiTextfield placeholder="Field placeholder" />
+                                        <span class="tui-required"></span>
+                                    </tui-input>
+                                    <tui-error formControlName="title" [error]="[] | tuiFieldError | async"></tui-error>
+                                </div>
+                                <div style="float: right;" class="tui-form__buttons">
+
+                                    <button tuiButton size="m" type="submit" class="tui-form__button">
+                                Search
+                            </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <div *ngFor="let title of titles" class="formatted">
+                        <span>{{title.text}}</span>
+                    </div>
                 </div>
-                <div style="float: right;" class="tui-form__buttons">
+            </ng-template>
+        </tui-accordion-item>
+    </div>
+</section>
+<section>
+    <div class="card tui-space_top-5  tui-container">
 
-                    <button tuiButton  size="m" type="submit" class="tui-form__button">
-                        Search
-                    </button>
-                </div>
-            </div>
-        </div>
-    </form>
-    <div> {{ values }}</div>
+        <form [formGroup]="createBookForm" (ngSubmit)="createBookForm.valid && submitCreateBook()">
+            <div class="tui-row tui-row_sme">
+                <div class="tui-col_8">
+                    <h3 class="tui-form__header tui-form__header_margin-top_none">Create Book</h3>
+                    <div class="tui-form__row">
+                        <tui-input formControlName="bookName" tuiHintContent="A tooltip">
+                            Book Name
+                            <input tuiTextfield placeholder="Field placeholder" />
+                            <span class="tui-required"></span>
+                        </tui-input>
+                        <tui-error formControlName="bookName" [error]="[] | tuiFieldError | async"></tui-error>
+                    </div>
+                    <div class="tui-form__row">
+                        <tui-input formControlName="bookTitle" tuiHintContent="A tooltip">
+                            Book Title
+                            <input tuiTextfield placeholder="Field placeholder" />
+                            <span class="tui-required"></span>
+                        </tui-input>
+                        <tui-error formControlName="bookTitle" [error]="[] | tuiFieldError | async"></tui-error>
+                    </div>
+                    <div style="float: right;" class="tui-form__buttons">
 
-  </div>
-
-</div>
-<section >
-  <div class="card tui-space_top-5  tui-container">
-
-  <form [formGroup]="createBookForm" (ngSubmit)="bookForm.valid && submitCreateBook()">
-    <div class="tui-row tui-row_sme">
-        <div class="tui-col_8">
-            <h3 class="tui-form__header tui-form__header_margin-top_none">Create Book</h3>
-            <div class="tui-form__row">
-                <tui-input formControlName="bookName" tuiHintContent="A tooltip">
-                    Book Name
-                    <input tuiTextfield placeholder="Field placeholder" />
-                    <span class="tui-required"></span>
-                </tui-input>
-                <tui-error formControlName="bookName" [error]="[] | tuiFieldError | async"></tui-error>
-            </div>
-            <div class="tui-form__row">
-              <tui-input formControlName="bookTitle" tuiHintContent="A tooltip">
-                  Book Title
-                  <input tuiTextfield placeholder="Field placeholder" />
-                  <span class="tui-required"></span>
-              </tui-input>
-              <tui-error formControlName="bookTitle" [error]="[] | tuiFieldError | async"></tui-error>
-          </div>
-            <div style="float: right;" class="tui-form__buttons">
-
-                <button tuiButton size="m" type="submit" class="tui-form__button">
-                    Create
-                </button>
-                <button tuiButton type="button" appearance="flat" size="m" class="tui-form__button">
+                        <button tuiButton type="button" appearance="flat" size="m" class="tui-form__button">
                     Cancel
                 </button>
+                        <button tuiButton size="m" type="submit" class="tui-form__button">
+                    Create
+                </button>
+                    </div>
+                </div>
             </div>
-        </div>
+        </form>
     </div>
-</form>
-</div>
 </section>

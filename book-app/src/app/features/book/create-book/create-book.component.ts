@@ -7,6 +7,8 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {TuiCurrency} from '@taiga-ui/addon-commerce';
 import {TuiDay, TuiTime} from '@taiga-ui/cdk';
 import { BookService } from '../book.service';
+import { CreateBook, Title } from './models/CreateBook';
+import { SuggetionsTitleBook } from './models/SuggetionsTitleBook';
 const customOptionContent: TuiTablePaginationOptions['sizeOptionContent'] = ({
   $implicit,
   total,
@@ -22,12 +24,6 @@ const customOptionContent: TuiTablePaginationOptions['sizeOptionContent'] = ({
 };
 
 
-class Book {
-  constructor(
-      readonly title: string,
-  ) {}
-}
-
 @Component({
   selector: 'app-create-book',
   templateUrl: './create-book.component.html',
@@ -37,7 +33,7 @@ class Book {
 ],
 })
 export class CreateBookComponent {
-  values: any;
+  titles!: SuggetionsTitleBook[];
 
   /**
    *
@@ -59,29 +55,26 @@ export class CreateBookComponent {
 
 ];
 
-
-books = [
-  new Book(`title 1`),
-];
-
-
 createBookForm = new FormGroup({
-  bookName: new FormControl(``, Validators.required),
-  bookTitle: new FormControl(``, Validators.required),
-
-});
-bookForm = new FormGroup({
+  url: new FormControl(``, Validators.required),
+  tableContents: new FormControl(``, Validators.required),
+  dedication: new FormControl(``, Validators.required),
+  preface: new FormControl(``, Validators.required),
   title: new FormControl(``, Validators.required),
 
 });
-submit() {
-  const  question  = this.bookForm.value.title as string;
+
+titeSuggestionsForm = new FormGroup({
+  title: new FormControl(``, Validators.required),
+
+});
+submitGetTitleSuggestions() {
+  const  question  = this.titeSuggestionsForm.value.title as string;
   this.bookService.getTitles(question)
   .subscribe(
     (response: any) => {                           //next() callback
       console.log('response received')
-      this.values = response;
-      alert(JSON.stringify(response));
+      this.titles = response as SuggetionsTitleBook[];
       console.log(response);
     },
     (error: any) => {                              //error() callback
@@ -89,18 +82,22 @@ submit() {
 
     },
     () => {                                   //complete() callback
-      alert("complete");      //This is actually not needed
+      console.log("complete");      //This is actually not needed
 
     })
 }
 submitCreateBook() {
-  const  question  = this.bookForm.value.title as string;
-  this.bookService.getTitles(question)
+  const createBook= new CreateBook();
+  createBook.title=new Title();
+  createBook.url  = this.createBookForm.value.url as string;
+ createBook.tableContents  = this.createBookForm.value.tableContents as string;
+ createBook.dedication  = this.createBookForm.value.url as string;
+ createBook.preface  = this.createBookForm.value.tableContents as string;
+ createBook.title.title  = this.createBookForm.value.url as string;
+  this.bookService.createBook(createBook)
   .subscribe(
     (response: any) => {                           //next() callback
       console.log('response received')
-      this.values = response;
-      alert(JSON.stringify(response));
       console.log(response);
     },
     (error: any) => {                              //error() callback
@@ -108,7 +105,7 @@ submitCreateBook() {
 
     },
     () => {                                   //complete() callback
-      alert("complete");      //This is actually not needed
+      console.log("complete");      //This is actually not needed
 
     })
 }

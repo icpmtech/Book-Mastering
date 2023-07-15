@@ -1,26 +1,24 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-class Book {
-  constructor(
-      readonly title: string,
-  ) {}
-}
-
+import { CreateBook } from './create-book/models/CreateBook';
+import { SuggetionsTitleBook } from './create-book/models/SuggetionsTitleBook';
 @Injectable({
   providedIn: 'root'
 })
 export class BookService {
+  createBook(createBook: CreateBook): Observable<CreateBook> {
+    return this.http.post<CreateBook>(this.pathAPI,createBook)
+  }
 
 pathAPI = "https://localhost:44394/api/ChapGPTService/GetTitles";
-list: any | undefined ;
 constructor( private http: HttpClient ) {
 }
   getTitles (question: any): Observable<any> {
    
     let queryParams = new HttpParams();
     queryParams = queryParams.append("question",question);
-    return this.http.get(this.pathAPI,{params:queryParams,responseType: 'text'})
+    return this.http.get<SuggetionsTitleBook[]>(this.pathAPI,{params:queryParams})
      
     
   }
