@@ -8,17 +8,17 @@ import { SuggetionsTitleBook } from './create-book/models/SuggetionsTitleBook';
 })
 export class BookService {
   createBook(createBook: CreateBook): Observable<CreateBook> {
-    return this.http.post<CreateBook>(this.pathAPI,createBook)
+    return this.http.post<CreateBook>(`${this.pathAPI}BookModel`,createBook)
   }
 
-pathAPI = "https://localhost:44394/api/ChapGPTService/GetTitles";
+pathAPI = "https://localhost:44394/api/";
 constructor( private http: HttpClient ) {
 }
   getTitles (question: any): Observable<any> {
    
     let queryParams = new HttpParams();
     queryParams = queryParams.append("question",question);
-    return this.http.get<SuggetionsTitleBook[]>(this.pathAPI,{params:queryParams})
+    return this.http.get<SuggetionsTitleBook[]>(`${this.pathAPI}ChapGPTService/GetTitles`,{params:queryParams})
      
     
   }

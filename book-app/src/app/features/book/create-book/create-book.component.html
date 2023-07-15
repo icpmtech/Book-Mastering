@@ -47,20 +47,44 @@
                 <div class="tui-col_8">
                     <h3 class="tui-form__header tui-form__header_margin-top_none">Create Book</h3>
                     <div class="tui-form__row">
-                        <tui-input formControlName="bookName" tuiHintContent="A tooltip">
-                            Book Name
+                        <tui-input formControlName="title" tuiHintContent="A tooltip">
+                            Title
                             <input tuiTextfield placeholder="Field placeholder" />
                             <span class="tui-required"></span>
                         </tui-input>
-                        <tui-error formControlName="bookName" [error]="[] | tuiFieldError | async"></tui-error>
+                        <tui-error formControlName="title" [error]="[] | tuiFieldError | async"></tui-error>
                     </div>
                     <div class="tui-form__row">
-                        <tui-input formControlName="bookTitle" tuiHintContent="A tooltip">
-                            Book Title
+                        <tui-input formControlName="url" tuiHintContent="A tooltip">
+                            Url
                             <input tuiTextfield placeholder="Field placeholder" />
                             <span class="tui-required"></span>
                         </tui-input>
-                        <tui-error formControlName="bookTitle" [error]="[] | tuiFieldError | async"></tui-error>
+                        <tui-error formControlName="url" [error]="[] | tuiFieldError | async"></tui-error>
+                    </div>
+                    <div class="tui-form__row">
+                        <tui-input formControlName="dedication" tuiHintContent="A tooltip">
+                            Dedication
+                            <input tuiTextfield placeholder="Field placeholder" />
+                            <span class="tui-required"></span>
+                        </tui-input>
+                        <tui-error formControlName="dedication" [error]="[] | tuiFieldError | async"></tui-error>
+                    </div>
+                    <div class="tui-form__row">
+                        <tui-input formControlName="preface" tuiHintContent="A tooltip">
+                            Preface
+                            <input tuiTextfield placeholder="Field placeholder" />
+                            <span class="tui-required"></span>
+                        </tui-input>
+                        <tui-error formControlName="preface" [error]="[] | tuiFieldError | async"></tui-error>
+                    </div>
+                    <div class="tui-form__row">
+                        <tui-input formControlName="tableContents" tuiHintContent="A tooltip">
+                            Table Contents
+                            <input tuiTextfield placeholder="Field placeholder" />
+                            <span class="tui-required"></span>
+                        </tui-input>
+                        <tui-error formControlName="tableContents" [error]="[] | tuiFieldError | async"></tui-error>
                     </div>
                     <div style="float: right;" class="tui-form__buttons">
 

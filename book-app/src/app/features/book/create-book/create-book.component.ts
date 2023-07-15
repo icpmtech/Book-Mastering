@@ -91,13 +91,14 @@ submitCreateBook() {
   createBook.title=new Title();
   createBook.url  = this.createBookForm.value.url as string;
  createBook.tableContents  = this.createBookForm.value.tableContents as string;
- createBook.dedication  = this.createBookForm.value.url as string;
- createBook.preface  = this.createBookForm.value.tableContents as string;
- createBook.title.title  = this.createBookForm.value.url as string;
+ createBook.dedication  = this.createBookForm.value.dedication as string;
+ createBook.preface  = this.createBookForm.value.preface as string;
+ createBook.title.title  = this.createBookForm.value.title as string;
   this.bookService.createBook(createBook)
   .subscribe(
     (response: any) => {                           //next() callback
       console.log('response received')
+     alert(JSON.stringify(response));
       console.log(response);
     },
     (error: any) => {                              //error() callback
