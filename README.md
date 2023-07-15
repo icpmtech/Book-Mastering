@@ -72,7 +72,7 @@ Live application:
 
 ## High-level Design
 
-Below is the high-level structure of the application.
+Below is the high-level structure of the Angular v16 application Book Helper (Frontend).
 
 ```sh
 ./src
