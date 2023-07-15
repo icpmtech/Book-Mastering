@@ -102,6 +102,10 @@ Below is the high-level structure of the application.
 │   │   ├── about
 │   │   ├── home
 │   │   └── secured-feat
+│   │   └── book
+│   │   └── sections
+│   │   └── chapters
+│   │   └── ...
 │   │
 │   └── shared # shared UI modules and utilities
 │       ├── ui
@@ -124,7 +128,7 @@ Below is the high-level structure of the application.
 
 ## Contributing
 
-Who is for this? I would love for you to contribute to Angular Authentication! Before you start, please read the .
+Who is for this? I would love for you to contribute to **Book Helper**! Before you start, please read the our community guidlines.
 
 If you have found any bug in the source code or want to _request_ a new feature, you can help by  at GitHub. Even better, you can fork this repository and  with the fix or the new feature description.
 
@@ -135,7 +139,7 @@ If you have found any bug in the source code or want to _request_ a new feature,
 
 ### Author: Pedro Martins ✍️
 
-- Fullstack Software Engineer - I’m currently working as Solution/Software Architect application development.
+- Senior Software Architect - I’m currently working as Solution/Software Architect application development.
 - I write stuff at [cantinhode.net](https://cantinhode.net)
 - How to reach me: [cantinhode.net](https://cantinhode.net)
 
