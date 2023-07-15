@@ -13,6 +13,9 @@ import {
 import {TUI_ARROW} from '@taiga-ui/kit';
 import {BehaviorSubject, combineLatest, Observable, timer} from 'rxjs';
 import {debounceTime, filter, map, share, startWith, switchMap} from 'rxjs/operators';
+import { BookService } from '../book.service';
+import { CreateBook } from '../create-book/models/CreateBook';
+import { ListBook } from '../create-book/models/ListBook';
 
 interface Book {
     readonly name: string;
@@ -75,19 +78,20 @@ export class ListBookComponent {
 
     readonly minAge = new FormControl(21);
 
-    readonly request$ = combineLatest([
-        this.sorter$,
-        this.direction$,
-        this.page$,
-        this.size$,
-        tuiControlValue<number>(this.minAge),
-    ]).pipe(
-        // zero time debounce for a case when both key and direction change
-        debounceTime(0),
-        switchMap(query => this.getData(...query).pipe(startWith(null))),
-        share(),
-    );
+    readonly request$ = this.bookService.getBooks().pipe(
+        (response: any) => {                           //next() callback
+          console.log('response received')
+         return response;
+        },
+       );
 
+    /**
+     *
+     */
+    constructor(private bookService:BookService) {
+       
+
+    }
     initial: readonly string[] = ['Name', 'Creation Date', 'Chapters'];
 
     enabled = this.initial;
@@ -100,17 +104,14 @@ export class ListBookComponent {
 
     readonly loading$ = this.request$.pipe(map(tuiIsFalsy));
 
-    readonly total$ = this.request$.pipe(
-        filter(tuiIsPresent),
-        map(({length}) => length),
-        startWith(1),
-    );
+    
 
-    readonly data$: Observable<readonly Book[]> = this.request$.pipe(
-        filter(tuiIsPresent),
-        map(users => users.filter(tuiIsPresent)),
-        startWith([]),
-    );
+    readonly data$: Observable<readonly ListBook[]> =this.bookService.getBooks().pipe(
+        (response: any) => {                           //next() callback
+          console.log('response received')
+         return response;
+        },
+       );
 
     onEnabled(enabled: readonly string[]): void {
         this.enabled = enabled;
@@ -139,25 +140,7 @@ export class ListBookComponent {
         return getAge(user);
     }
 
-    private getData(
-        key: 'age' | 'dob' | 'name',
-        direction: -1 | 1,
-        page: number,
-        size: number,
-        minAge: number,
-    ): Observable<ReadonlyArray<Book | null>> {
-        console.info('Making a request');
-
-        const start = page * size;
-        const end = start + size;
-        const result = [...DATA]
-            .sort(sortBy(key, direction))
-            .filter(user => getAge(user) >= minAge)
-            .map((user, index) => (index >= start && index < end ? user : null));
-
-        // Imitating server response
-        return timer(3000).pipe(map(() => result));
-    }
+    
 }
 
 function sortBy(key: 'age' | 'dob' | 'name', direction: -1 | 1): TuiComparator<Book> {

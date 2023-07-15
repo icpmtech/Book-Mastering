@@ -84,7 +84,7 @@ submitGetTitleSuggestions() {
     () => {                                   //complete() callback
       console.log("complete");      //This is actually not needed
 
-    })
+    });
 }
 submitCreateBook() {
   const createBook= new CreateBook();
@@ -108,6 +108,6 @@ submitCreateBook() {
     () => {                                   //complete() callback
       console.log("complete");      //This is actually not needed
 
-    })
+    });
 }
 }
