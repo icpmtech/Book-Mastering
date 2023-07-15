@@ -1,4 +1,4 @@
-# Unleashing the Power of ASP.NET Core 7.0 and Angular 16
+# Unleashing the Power of ASP.NET Core v7.0 and Angular v16
 Unleashing the Power of ASP.NET Core 7.0 and Angular 16 A Comprehensive Guide
 An Angular application that demonstrates best practices for user authentication & authorization flows and Inetgration With ASP.net 7.0.
 By Pedro Martins
@@ -72,7 +72,7 @@ Live application:
 
 ## High-level Design
 
-Below is the high-level structure of the application.
+Below is the high-level structure of the Angular v16 application Book Helper (Frontend).
 
 ```sh
 ./src
@@ -102,6 +102,10 @@ Below is the high-level structure of the application.
 │   │   ├── about
 │   │   ├── home
 │   │   └── secured-feat
+│   │   └── book
+│   │   └── sections
+│   │   └── chapters
+│   │   └── ...
 │   │
 │   └── shared # shared UI modules and utilities
 │       ├── ui
@@ -124,7 +128,7 @@ Below is the high-level structure of the application.
 
 ## Contributing
 
-Who is for this? I would love for you to contribute to Angular Authentication! Before you start, please read the .
+Who is for this? I would love for you to contribute to **Book Helper**! Before you start, please read the our community guidlines.
 
 If you have found any bug in the source code or want to _request_ a new feature, you can help by  at GitHub. Even better, you can fork this repository and  with the fix or the new feature description.
 
@@ -135,7 +139,7 @@ If you have found any bug in the source code or want to _request_ a new feature,
 
 ### Author: Pedro Martins ✍️
 
-- Fullstack Software Engineer - I’m currently working as Solution/Software Architect application development.
+- Senior Software Architect - I’m currently working as Solution/Software Architect application development.
 - I write stuff at [cantinhode.net](https://cantinhode.net)
 - How to reach me: [cantinhode.net](https://cantinhode.net)
 
