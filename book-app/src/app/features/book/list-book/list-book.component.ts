@@ -14,8 +14,8 @@ import {TUI_ARROW} from '@taiga-ui/kit';
 import {BehaviorSubject, combineLatest, Observable, timer} from 'rxjs';
 import {debounceTime, filter, map, share, startWith, switchMap} from 'rxjs/operators';
 import { BookService } from '../book.service';
-import { CreateBook } from '../create-book/models/CreateBook';
-import { ListBook } from '../create-book/models/ListBook';
+import { CreateBook } from '../models/CreateBook';
+import { ListBook } from '../models/ListBook';
 
 interface Book {
     readonly name: string;

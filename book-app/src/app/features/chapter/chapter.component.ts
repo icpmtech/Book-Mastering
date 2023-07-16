@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-book',
-  templateUrl: './book.component.html',
-  styleUrls: ['./book.component.scss']
+  selector: 'app-chapter',
+  templateUrl: './chapter.component.html',
+  styleUrls: ['./chapter.component.scss']
 })
-export class BookComponent {
+export class ChapterComponent {
 
 }

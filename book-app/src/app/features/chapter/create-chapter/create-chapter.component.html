@@ -8,15 +8,15 @@
 <section>
     <div class="tui-container">
         <tui-accordion-item class="container">
-            <h4 class="tui-form__header tui-form__header_margin-top_none">Title Suggestions</h4>
+            <h4 class="tui-form__header tui-form__header_margin-top_none">Content Suggestion</h4>
             <ng-template tuiAccordionItemContent>
                 <div class="card shadow(4)">
-                    <form [formGroup]="titeSuggestionsForm" (ngSubmit)="titeSuggestionsForm.valid && submitGetTitleSuggestions()">
+                    <form [formGroup]="titeSuggestionsForm" (ngSubmit)="titeSuggestionsForm.valid && submitGetChapterContentSuggestion()">
                         <div class="tui-row tui-row_sme">
                             <div class="tui-col_8">
                                 <div class="tui-form__row">
-                                    <tui-input formControlName="title" tuiHintContent="Ex:Give me titles to Chapter about ASP.NET Core and Angular 16">
-                                        Give me titles to my Chapter about YOUR Chapter MATTER
+                                    <tui-input formControlName="title" tuiHintContent="Ex:Give me titlesGive me content  to Chapter about ASP.NET Core 7.0 and Angular 16">
+                                        Give me content to my Chapter about YOUR Chapter MATTER
                                         <input tuiTextfield placeholder="Field placeholder" />
                                         <span class="tui-required"></span>
                                     </tui-input>

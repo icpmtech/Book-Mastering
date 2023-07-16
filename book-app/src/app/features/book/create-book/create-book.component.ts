@@ -4,11 +4,9 @@ import {
   tuiTablePaginationOptionsProvider,
 } from '@taiga-ui/addon-table';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {TuiCurrency} from '@taiga-ui/addon-commerce';
-import {TuiDay, TuiTime} from '@taiga-ui/cdk';
 import { BookService } from '../book.service';
-import { CreateBook, Title } from './models/CreateBook';
-import { SuggetionsTitleBook } from './models/SuggetionsTitleBook';
+import { CreateBook, Title } from '../models/CreateBook';
+import { SuggetionsTitleBook } from '../models/SuggetionsTitleBook';
 const customOptionContent: TuiTablePaginationOptions['sizeOptionContent'] = ({
   $implicit,
   total,

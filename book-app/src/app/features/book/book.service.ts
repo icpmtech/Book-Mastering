@@ -1,13 +1,17 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { CreateBook } from './create-book/models/CreateBook';
-import { SuggetionsTitleBook } from './create-book/models/SuggetionsTitleBook';
-import { ListBook } from './create-book/models/ListBook';
+import { CreateBook } from './models/CreateBook';
+import { SuggetionsTitleBook } from './models/SuggetionsTitleBook';
+import { ListBook } from './models/ListBook';
+import { EditBook } from './models/EditBook';
 @Injectable({
   providedIn: 'root'
 })
 export class BookService {
+  editBook(editBook: EditBook): Observable<EditBook> {
+    return this.http.put<EditBook>(`${this.pathAPI}BookModel`,editBook)
+  }
   createBook(createBook: CreateBook): Observable<CreateBook> {
     return this.http.post<CreateBook>(`${this.pathAPI}BookModel`,createBook)
   }

@@ -68,7 +68,7 @@ titeSuggestionsForm = new FormGroup({
   title: new FormControl(``, Validators.required),
 
 });
-submitGetTitleSuggestions() {
+submitGetChapterContentSuggestion() {
   const  question  = this.titeSuggestionsForm.value.title as string;
   this.chapterService.getTitles(question)
   .subscribe(
