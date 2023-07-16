@@ -47,7 +47,7 @@
                 <div class="tui-col_8">
                     <h3 class="tui-form__header tui-form__header_margin-top_none">Edit Book</h3>
                     <div class="tui-form__row">
-                        <tui-input readOnly:true formControlName="id" tuiHintContent="Id">
+                        <tui-input formControlName="id" tuiHintContent="Id">
                             Id
                             <input tuiTextfield placeholder="Id placeholder" />
                             <span class="tui-required"></span>
@@ -71,35 +71,34 @@
                         <tui-error formControlName="url" [error]="[] | tuiFieldError | async"></tui-error>
                     </div>
                     <div class="tui-form__row">
-                        <tui-input formControlName="dedication" tuiHintContent="A tooltip">
-                            Dedication
-                            <input tuiTextfield placeholder="Field placeholder" />
+                        <tui-text-area formControlName="dedication" tuiHintContent="A tooltip"> Dedication
+
                             <span class="tui-required"></span>
-                        </tui-input>
+                        </tui-text-area>
                         <tui-error formControlName="dedication" [error]="[] | tuiFieldError | async"></tui-error>
                     </div>
                     <div class="tui-form__row">
-                        <tui-input formControlName="preface" tuiHintContent="A tooltip">
+                        <tui-text-area formControlName="preface" tuiHintContent="A tooltip">
                             Preface
-                            <input tuiTextfield placeholder="Field placeholder" />
+
                             <span class="tui-required"></span>
-                        </tui-input>
+                        </tui-text-area>
                         <tui-error formControlName="preface" [error]="[] | tuiFieldError | async"></tui-error>
                     </div>
                     <div class="tui-form__row">
-                        <tui-input formControlName="tableContents" tuiHintContent="A tooltip">
+                        <tui-text-area formControlName="tableContents" tuiHintContent="A tooltip">
                             Table Contents
-                            <input tuiTextfield placeholder="Field placeholder" />
+
                             <span class="tui-required"></span>
-                        </tui-input>
+                        </tui-text-area>
                         <tui-error formControlName="tableContents" [error]="[] | tuiFieldError | async"></tui-error>
                     </div>
 
                     <div style="float: right;" class="tui-form__buttons">
 
-                        <button tuiButton type="button" appearance="flat" size="m" class="tui-form__button">
-                    Cancel
-                </button>
+                        <a tuiButton type="button" appearance="flat" size="m" routerLink="/book/list-books" class="tui-form__button">
+                            Cancel
+                    </a>
                         <button tuiButton size="m" type="submit" class="tui-form__button">
                     Edit
                 </button>

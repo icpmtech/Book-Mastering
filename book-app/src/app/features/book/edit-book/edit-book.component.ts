@@ -3,6 +3,7 @@ import { BookService } from '../book.service';
 import { SuggetionsTitleBook } from '../models/SuggetionsTitleBook';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { EditBook,Title } from '../models/EditBook';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-edit-book',
@@ -11,13 +12,30 @@ import { EditBook,Title } from '../models/EditBook';
 })
 export class EditBookComponent {
   titles!: SuggetionsTitleBook[];
-
+  
+  
   /**
    *
    */
   constructor(private bookService:BookService) {
-
-
+    this.bookService.getBookById(1).subscribe(
+      (response: any) => {                           //next() callback
+        console.log('response received')
+        this.editBookForm.controls.id.setValue(response.id);
+        this.editBookForm.controls.preface.setValue(response.preface);
+        this.editBookForm.controls.url.setValue(response.url);
+        this.editBookForm.controls.tableContents.setValue(response.tableContents);
+        this.editBookForm.controls.dedication.setValue(response.dedication);
+        console.log(response);
+      },
+      (error: any) => {                              //error() callback
+        alert(JSON.stringify(error));
+  
+      },
+      () => {                                   //complete() callback
+        console.log("complete");      //This is actually not needed
+  
+      });
   }
   items = [
     {
@@ -34,6 +52,7 @@ export class EditBookComponent {
 
 editBookForm = new FormGroup({
   url: new FormControl(``, Validators.required),
+  id: new FormControl(``, Validators.required),
   tableContents: new FormControl(``, Validators.required),
   dedication: new FormControl(``, Validators.required),
   preface: new FormControl(``, Validators.required),
@@ -41,6 +60,8 @@ editBookForm = new FormGroup({
 
 
 });
+
+
 
 titeSuggestionsForm = new FormGroup({
   title: new FormControl(``, Validators.required),

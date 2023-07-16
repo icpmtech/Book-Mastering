@@ -63,34 +63,34 @@
                         <tui-error formControlName="url" [error]="[] | tuiFieldError | async"></tui-error>
                     </div>
                     <div class="tui-form__row">
-                        <tui-input formControlName="dedication" tuiHintContent="A tooltip">
-                            Dedication
-                            <input tuiTextfield placeholder="Field placeholder" />
+                        <tui-text-area formControlName="dedication" tuiHintContent="A tooltip"> Dedication
+
                             <span class="tui-required"></span>
-                        </tui-input>
+                        </tui-text-area>
                         <tui-error formControlName="dedication" [error]="[] | tuiFieldError | async"></tui-error>
                     </div>
                     <div class="tui-form__row">
-                        <tui-input formControlName="preface" tuiHintContent="A tooltip">
+                        <tui-text-area formControlName="preface" tuiHintContent="A tooltip">
                             Preface
-                            <input tuiTextfield placeholder="Field placeholder" />
+
                             <span class="tui-required"></span>
-                        </tui-input>
+                        </tui-text-area>
                         <tui-error formControlName="preface" [error]="[] | tuiFieldError | async"></tui-error>
                     </div>
                     <div class="tui-form__row">
-                        <tui-input formControlName="tableContents" tuiHintContent="A tooltip">
+                        <tui-text-area formControlName="tableContents" tuiHintContent="A tooltip">
                             Table Contents
-                            <input tuiTextfield placeholder="Field placeholder" />
+
                             <span class="tui-required"></span>
-                        </tui-input>
+                        </tui-text-area>
                         <tui-error formControlName="tableContents" [error]="[] | tuiFieldError | async"></tui-error>
                     </div>
                     <div style="float: right;" class="tui-form__buttons">
 
-                        <button tuiButton type="button" appearance="flat" size="m" class="tui-form__button">
-                    Cancel
-                </button>
+
+                        <a tuiButton type="button" appearance="flat" size="m" routerLink="/book/list-books" class="tui-form__button">
+                            Cancel
+                    </a>
                         <button tuiButton size="m" type="submit" class="tui-form__button">
                     Create
                 </button>

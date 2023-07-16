@@ -19,6 +19,9 @@ export class BookService {
   getBooks(): Observable<ListBook[]> {
     return this.http.get<ListBook[]>(`${this.pathAPI}BookModel`)
   }
+  getBookById(bookId?:number): Observable<EditBook> {
+    return this.http.get<EditBook>(`${this.pathAPI}BookModel/${bookId}`)
+  }
 
 pathAPI = "https://localhost:44394/api/";
 constructor( private http: HttpClient ) {
