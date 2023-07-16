@@ -35,6 +35,14 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'chapter',
+   // canActivate: [AuthGuardService],
+    loadChildren: () =>
+      import('./features/chapter/chapter.module').then(
+        m => m.ChapterModule
+      ),
+  },
+  {
     path: '**',
     redirectTo: 'home',
   },

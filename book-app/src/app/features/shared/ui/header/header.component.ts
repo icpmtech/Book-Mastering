@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
+import { AuthFacade } from 'src/app/auth/store/auth.facade';
 
-import { AuthFacade } from '../../../auth/store/auth.facade';
 
 @Component({
-  selector: 'book-header',
+  selector: 'app-book-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
@@ -13,6 +13,7 @@ export class HeaderComponent {
     { link: '/about', label: 'About', icon: null },
     { link: '/secured-feat', label: 'Secured Feature', icon: 'tuiIconLock' },
     { link: '/book', label: 'Books', icon: 'tuiIconLock' },
+    { link: '/chapter', label: 'Chapters', icon: 'tuiIconLock' },
   ];
   authUser$ = this.authFacade.user$;
 
