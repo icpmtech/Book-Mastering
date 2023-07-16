@@ -96,7 +96,7 @@ export class ListBookComponent {
 
     enabled = this.initial;
 
-    columns = ['name', 'dob', 'age'];
+    columns = ['name', 'dob', 'age','actions'];
 
     search = '';
 

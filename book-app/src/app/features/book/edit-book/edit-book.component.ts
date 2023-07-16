@@ -39,6 +39,7 @@ editBookForm = new FormGroup({
   preface: new FormControl(``, Validators.required),
   title: new FormControl(``, Validators.required),
 
+
 });
 
 titeSuggestionsForm = new FormGroup({
@@ -63,7 +64,7 @@ submitGetTitleSuggestions() {
 
     });
 }
-submitCreateBook() {
+submitEditBook() {
   const editBook= new EditBook();
   editBook.title=new Title();
   editBook.url  = this.editBookForm.value.url as string;

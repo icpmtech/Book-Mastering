@@ -86,6 +86,14 @@
                         </tui-input>
                         <tui-error formControlName="tableContents" [error]="[] | tuiFieldError | async"></tui-error>
                     </div>
+                    <div class="tui-form__row">
+                        <tui-text-area formControlName="content" [expandable]="true" tuiHintContent="A tooltip">
+                            Type a text
+                            <span class="tui-required"></span>
+                        </tui-text-area>
+                        <tui-error formControlName="content" [error]="[] | tuiFieldError | async"></tui-error>
+
+                    </div>
                     <div style="float: right;" class="tui-form__buttons">
 
                         <button tuiButton type="button" appearance="flat" size="m" class="tui-form__button">

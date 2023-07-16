@@ -234,8 +234,8 @@ import { BookService } from './book.service';
 const routes: Routes = [
 { path: 'list-books', component: ListBookComponent },
 { path: 'create-books', component: CreateBookComponent },
-{ path: 'edit-books', component: EditBookComponent },
-{ path: 'delete-books', component: DeleteBookComponent },
+{ path: 'edit-books/:id', component: EditBookComponent },
+{ path: 'delete-books/:id', component: DeleteBookComponent },
 
 ];
 export const ALL_TAIGA_UI_MODULES = [

@@ -34,6 +34,9 @@
                         <th *tuiHead="'age'" tuiTh tuiSortable>
                             Preface
                         </th>
+                        <th *tuiHead="'actions'" tuiTh>
+                            Actions
+                        </th>
                     </tr>
                 </thead>
                 <tbody *tuiLet="data | tuiTableSort as sortedData" tuiTbody [data]="sortedData">
@@ -46,6 +49,11 @@
                         </td>
                         <td *tuiCell="'age'" tuiTd [class.match]="isMatch(item.preface)">
                             {{ item.preface }}
+                        </td>
+                        <td *tuiCell="'actions'" tuiTd>
+                            <a tuiButton type="button" size="xs" [routerLink]="['/book/edit-books', item.id]">
+                                Edit Book
+                                </a>
                         </td>
                     </tr>
                 </tbody>

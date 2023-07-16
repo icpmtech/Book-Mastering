@@ -61,7 +61,7 @@ createChapterForm = new FormGroup({
   dedication: new FormControl(``, Validators.required),
   preface: new FormControl(``, Validators.required),
   title: new FormControl(``, Validators.required),
-
+  content: new FormControl(``, Validators.required)
 });
 
 titeSuggestionsForm = new FormGroup({
