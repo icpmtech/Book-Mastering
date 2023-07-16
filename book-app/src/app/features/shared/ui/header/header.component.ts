@@ -13,7 +13,7 @@ export class HeaderComponent {
     { link: '/about', label: 'About', icon: null },
     { link: '/secured-feat', label: 'Secured Feature', icon: 'tuiIconLock' },
     { link: '/book', label: 'Books', icon: 'tuiIconLock' },
-    { link: '/chapter', label: 'Chapters', icon: 'tuiIconLock' },
+    { link: '/chapter', label: 'Chapters', icon: 'tuiIconLock' }
   ];
   authUser$ = this.authFacade.user$;
 
