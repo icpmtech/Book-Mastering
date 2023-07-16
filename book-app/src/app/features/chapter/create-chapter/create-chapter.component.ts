@@ -8,7 +8,7 @@ import {TuiCurrency} from '@taiga-ui/addon-commerce';
 import {TuiDay, TuiTime} from '@taiga-ui/cdk';
 import { ChapterService } from '../chapter.service';
 import { CreateChapter, Title } from '../models/CreateChapter';
-import { SuggetionsTitleChapter } from '../models/SuggetionsChapterContent';
+import { SuggetionsChapterContent } from '../models/SuggetionsChapterContent';
 const customOptionContent: TuiTablePaginationOptions['sizeOptionContent'] = ({
   $implicit,
   total,
@@ -33,7 +33,7 @@ const customOptionContent: TuiTablePaginationOptions['sizeOptionContent'] = ({
 ],
 })
 export class CreateChapterComponent {
-  titles!: SuggetionsTitleChapter[];
+  titles!: SuggetionsChapterContent[];
 
   /**
    *
@@ -74,7 +74,7 @@ submitGetTitleSuggestions() {
   .subscribe(
     (response: any) => {                           //next() callback
       console.log('response received')
-      this.titles = response as SuggetionsTitleChapter[];
+      this.titles = response as SuggetionsChapterContent[];
       console.log(response);
     },
     (error: any) => {                              //error() callback
