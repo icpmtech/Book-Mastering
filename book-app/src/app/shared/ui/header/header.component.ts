@@ -15,6 +15,7 @@ export class HeaderComponent {
     { link: '/secured-feat', label: 'Admin', icon: 'tuiIconLock' },
     { link: '/book/list-books', label: 'Books', icon: 'tuiIconLock' },
     { link: '/chapter/list-chapters', label: 'Chapters', icon: 'tuiIconLock' },
+    { link: '/section/list-sections', label: 'Sections', icon: 'tuiIconLock' },
   ];
   authUser$ = this.authFacade.user$;
 

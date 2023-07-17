@@ -43,6 +43,14 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'section',
+   // canActivate: [AuthGuardService],
+    loadChildren: () =>
+      import('./features/section/section.module').then(
+        m => m.SectionModule
+      ),
+  },
+  {
     path: '**',
     redirectTo: 'home',
   },
