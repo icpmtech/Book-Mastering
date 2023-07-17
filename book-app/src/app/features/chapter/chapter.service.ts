@@ -4,10 +4,24 @@ import { Observable } from 'rxjs';
 import { CreateChapter } from './models/CreateChapter';
 import { ListChapter } from './models/ListChapter';
 import { SuggetionsChapterContent } from './models/SuggetionsChapterContent';
+import { EditChapter } from './models/EditChapter';
 @Injectable({
   providedIn: 'root'
 })
 export class ChapterService {
+  deleteChapter(id: number): Observable<any> {
+    let queryParams = new HttpParams();
+    queryParams = queryParams.append("id",id);
+    return this.http.delete(`${this.pathAPI}ChapterModel`,{params:queryParams})
+  }
+  editBook(editChapter: EditChapter): Observable<EditChapter> {
+    return this.http.put<EditChapter>(`${this.pathAPI}ChapterModel`,editChapter)
+  }
+  getChapterById(chapterId?:number): Observable<EditChapter> {
+    return this.http.get<EditChapter>(`${this.pathAPI}ChapterModel/${chapterId}`)
+  }
+
+
   createChapter(createChapter: CreateChapter): Observable<CreateChapter> {
     return this.http.post<CreateChapter>(`${this.pathAPI}ChapterModel`,createChapter)
   }
