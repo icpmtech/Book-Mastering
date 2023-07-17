@@ -29,7 +29,7 @@ Live application:
 
 ### Setup & Usage
 
-- Clone this repository: `https://github.com/icpmtech/Book-Unleashing.git`
+- Clone this repository: `https://github.com/icpmtech/Book-Mastering.git`
 - `cd book-app`
 - Install dependencies: `npm install`
 - Serve the Angular app: `npm start`
