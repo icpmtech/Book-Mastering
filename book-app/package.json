@@ -7,7 +7,7 @@
         "build": "ng build",
         "watch": "ng build --watch --configuration development",
         "test": "ng test",
-        "predeploy": "ng build --configuration production  --base-href=https://icpmtech.github.io/Book-Unleashing/",
+        "predeploy": "ng build --configuration production  --base-href=https://icpmtech.github.io/Book-Mastering/",
         "deploy": "npx gh-pages -d dist/book-app",
         "lint": "ng lint"
     },
