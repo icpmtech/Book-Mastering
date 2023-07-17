@@ -26,7 +26,7 @@ namespace Book_Guide_MVC.Services
         /// <returns></returns>
         [HttpGet]
         [Route("GetChaptersSections")]
-        public async Task<string> GetChaptersSectionsAsync(string question)
+        public async Task<IEnumerable<SuggestionsViewModel>> GetChaptersSectionsAsync(string question)
         {
             try
             {
@@ -48,7 +48,7 @@ namespace Book_Guide_MVC.Services
         /// <returns></returns>
         [HttpGet]
         [Route("GetChapters")]
-        public async Task<string> GetChaptersAsync(string question)
+        public async Task<IEnumerable<SuggestionsViewModel>> GetChaptersAsync(string question)
         {
             try
             {
@@ -71,7 +71,7 @@ namespace Book_Guide_MVC.Services
         /// <returns></returns>
         [HttpGet]
         [Route("GetTitles")]
-        public async Task<string> GetTitlesAsync(string question)
+        public async Task<IEnumerable<SuggestionsViewModel>> GetTitlesAsync(string question)
         {
             try
             {
@@ -87,10 +87,10 @@ namespace Book_Guide_MVC.Services
             return null;
         }
 
-        private async Task<string> CallChatGPTExternalAPI(string question)
+        private async Task<IEnumerable<SuggestionsViewModel>?> CallChatGPTExternalAPI(string question)
         {
             HttpClient client = new HttpClient();
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "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");
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "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");
 
             var request = new OpenAIRequest
             {
@@ -106,18 +106,10 @@ namespace Book_Guide_MVC.Services
             if (!response.IsSuccessStatusCode)
             {
                 var errorResponse = JsonSerializer.Deserialize<OpenAIErrorResponse>(resjson);
-                throw new Exception(errorResponse.Error.Message);
+                throw new Exception(errorResponse?.Error.Message);
             }
-            //var data = JsonSerializer.Deserialize<OpenAIResponse>(resjson);
             var data = JsonSerializer.Deserialize<Root>(resjson);
-            //var data = JsonSerializer.Deserialize(resjson, typeof(object));
-            StringBuilder sb=new StringBuilder();
-            foreach (var item in data.choices)
-            {
-                sb.AppendLine(item.text);
-            }
-          string results=  sb.ToString(); ;
-           return results;
+            return data?.choices.Select(s=>new SuggestionsViewModel(text: s.text));
         }
 
       }
