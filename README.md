@@ -1,6 +1,6 @@
-# Unleashing the Power of ASP.NET Core v7.0 and Angular v16
-Unleashing the Power of ASP.NET Core 7.0 and Angular 16 A Comprehensive Guide
-An Angular application that demonstrates best practices for user authentication & authorization flows and Inetgration With ASP.net 7.0.
+# Mastering of Power of ASP.NET Core v7.0 and Angular v16
+Mastering of Power of ASP.NET Core 7.0 and Angular 16 A Comprehensive Guide
+Practical Mastery: Real-World Full Stack Project in ASP.NET 7.0 and Angular v16. All the concpts aroun PWAs, Deploy, and other... 
 By Pedro Martins
 
 ## Table of Contents
