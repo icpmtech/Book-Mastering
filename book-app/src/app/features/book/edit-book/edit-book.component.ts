@@ -49,7 +49,6 @@ export class EditBookComponent {
 
 
 ];
-
 editBookForm = new FormGroup({
   url: new FormControl(``, Validators.required),
   id: new FormControl(``, Validators.required),
@@ -60,8 +59,6 @@ editBookForm = new FormGroup({
 
 
 });
-
-
 
 titeSuggestionsForm = new FormGroup({
   title: new FormControl(``, Validators.required),
