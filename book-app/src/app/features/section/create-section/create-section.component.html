@@ -56,11 +56,11 @@
                     </div>
 
                     <div class="tui-form__row">
-                        <tui-text-area formControlName="content" [expandable]="true" tuiHintContent="A tooltip">
+                        <tui-text-area formControlName="body" [expandable]="true" tuiHintContent="A tooltip">
                             Body Content
                             <span class="tui-required"></span>
                         </tui-text-area>
-                        <tui-error formControlName="content" [error]="[] | tuiFieldError | async"></tui-error>
+                        <tui-error formControlName="body" [error]="[] | tuiFieldError | async"></tui-error>
 
                     </div>
                     <div style="float: right;" class="tui-form__buttons">

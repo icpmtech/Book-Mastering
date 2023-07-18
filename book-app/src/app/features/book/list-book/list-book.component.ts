@@ -19,49 +19,17 @@ import { ListBook } from '../models/ListBook';
 import { TuiDialogService } from '@taiga-ui/core';
 
 interface Book {
-    readonly name: string;
-    readonly dob: TuiDay;
+    readonly id: number;
+    readonly title: string;
 }
 
-const TODAY = TuiDay.currentLocal();
-const FIRST = [
-    'John',
-    'Jane',
-    'Jack',
-    'Jill',
-    'James',
-    'Joan',
-    'Jim',
-    'Julia',
-    'Joe',
-    'Julia',
-];
 
-const LAST = [
-    'Smith',
-    'West',
-    'Brown',
-    'Jones',
-    'Davis',
-    'Miller',
-    'Johnson',
-    'Jackson',
-    'Williams',
-    'Wilson',
-];
+type Key =  'title' | 'id';
 
-type Key = 'age' | 'dob' | 'name';
 
-const DATA: readonly Book[] = Array.from({length: 300}, () => ({
-    name: `${LAST[Math.floor(Math.random() * 10)]}, ${
-        FIRST[Math.floor(Math.random() * 10)]
-    }`,
-    dob: TODAY.append({day: -Math.floor(Math.random() * 4000) - 7500}),
-}));
 const KEYS: Record<string, Key> = {
-    Name: 'name',
-    Age: 'age',
-    'Date of Birth': 'dob',
+    Id: 'id',
+    Title: 'title',
 };
 
 @Component({
@@ -72,10 +40,10 @@ const KEYS: Record<string, Key> = {
 })
 export class ListBookComponent {
     private readonly size$ = new BehaviorSubject(10);
-    private readonly page$ = new BehaviorSubject(0);
+    private readonly pbody$ = new BehaviorSubject(0);
 
     readonly direction$ = new BehaviorSubject<-1 | 1>(-1);
-    readonly sorter$ = new BehaviorSubject<Key>('name');
+    readonly sorter$ = new BehaviorSubject<Key>('id');
 
     readonly minAge = new FormControl(21);
 
@@ -105,11 +73,11 @@ export class ListBookComponent {
             })
             .subscribe();
     }
-    initial: readonly string[] = ['Name', 'Creation Date', 'Chapters'];
+    initial: readonly string[] = ['Id', 'Title', 'Preface'];
 
     enabled = this.initial;
 
-    columns = ['name', 'dob', 'age','actions'];
+    columns = ['id', 'title', 'preface','actions'];
 
     search = '';
 
@@ -141,33 +109,21 @@ export class ListBookComponent {
         this.size$.next(size);
     }
 
-    onPage(page: number): void {
-        this.page$.next(page);
+    onPbody(pbody: number): void {
+        this.pbody$.next(pbody);
     }
 
     isMatch(value: unknown): boolean {
         return !!this.search && TUI_DEFAULT_MATCHER(value, this.search);
     }
 
-    getAge(user: Book): number {
-        return getAge(user);
-    }
+  
 
     
 }
 
-function sortBy(key: 'age' | 'dob' | 'name', direction: -1 | 1): TuiComparator<Book> {
-    return (a, b) =>
-        key === 'age'
-            ? direction * tuiDefaultSort(getAge(a), getAge(b))
-            : direction * tuiDefaultSort(a[key], b[key]);
+function sortBy(key: 'title' | 'id', direction: -1 | 1): TuiComparator<Book> {
+    return (a, b) =>direction * tuiDefaultSort(a[key], b[key]);
 }
 
-function getAge({dob}: Book): number {
-    const years = TODAY.year - dob.year;
-    const months = TODAY.month - dob.month;
-    const days = TODAY.day - dob.day;
-    const offset = tuiToInt(months > 0 || (!months && days > 9));
 
-    return years + offset;
-}

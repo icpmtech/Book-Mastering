@@ -5,7 +5,7 @@ import {
 } from '@taiga-ui/addon-table';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import { SectionService } from '../section.service';
-import { CreateSection, Title } from '../models/CreateSection';
+import { CreateSection } from '../models/CreateSection';
 import { SuggetionsSectionContent } from '../models/SuggetionsSectionContent';
 const customOptionContent: TuiTablePaginationOptions['sizeOptionContent'] = ({
   $implicit,
@@ -54,12 +54,8 @@ export class CreateSectionComponent {
 ];
 
 createSectionForm = new FormGroup({
-  url: new FormControl(``, Validators.required),
-  tableContents: new FormControl(``, Validators.required),
-  dedication: new FormControl(``, Validators.required),
-  preface: new FormControl(``, Validators.required),
   title: new FormControl(``, Validators.required),
-  content: new FormControl(``, Validators.required)
+  body: new FormControl(``, Validators.required)
 });
 
 titeSuggestionsForm = new FormGroup({
@@ -86,12 +82,8 @@ submitGetSectionContentSuggestion() {
 }
 submitCreateSection() {
   const createSection= new CreateSection();
-  createSection.title=new Title();
-  createSection.url  = this.createSectionForm.value.url as string;
- createSection.tableContents  = this.createSectionForm.value.tableContents as string;
- createSection.dedication  = this.createSectionForm.value.dedication as string;
- createSection.preface  = this.createSectionForm.value.preface as string;
- createSection.title.title  = this.createSectionForm.value.title as string;
+  createSection.body  = this.createSectionForm.value.title as string;
+  createSection.body  = this.createSectionForm.value.body as string;
   this.sectionService.createSection(createSection)
   .subscribe(
     (response: any) => {                           //next() callback

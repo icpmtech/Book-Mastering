@@ -4,6 +4,7 @@ import { SuggetionsTitleBook } from '../models/SuggetionsTitleBook';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { EditBook,Title } from '../models/EditBook';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit-book',
@@ -14,31 +15,37 @@ export class EditBookComponent {
   titles!: SuggetionsTitleBook[];
   
   
-  /**
-   *
-   */
-  constructor(private bookService:BookService) {
-    this.bookService.getBookById(1).subscribe(
-      (response: any) => {                           //next() callback
-        console.log('response received')
-        this.editBookForm.controls.id.setValue(response.id);
-        this.editBookForm.controls.preface.setValue(response.preface);
-        this.editBookForm.controls.url.setValue(response.url);
-        this.editBookForm.controls.tableContents.setValue(response.tableContents);
-        this.editBookForm.controls.dedication.setValue(response.dedication);
-        this.editBookForm.controls.author.setValue(response.author);
-        this.editBookForm.controls.title.setValue(response.title);
-        console.log(response);
-      },
-      (error: any) => {                              //error() callback
-        alert(JSON.stringify(error));
-  
-      },
-      () => {                                   //complete() callback
-        console.log("complete");      //This is actually not needed
-  
-      });
+ 
+
+  constructor(private bookService:BookService,private router:Router) {
+    
   }
+
+  ngOnInit() {
+    const id=this.router.url.split('/')[3];
+          this.bookService.getBookById(id as any|number).subscribe(
+            (response: any) => {                           //next() callback
+              console.log('response received')
+              this.editBookForm.controls.id.setValue(response.id);
+              this.editBookForm.controls.preface.setValue(response.preface);
+              this.editBookForm.controls.url.setValue(response.url);
+              this.editBookForm.controls.tableContents.setValue(response.tableContents);
+              this.editBookForm.controls.dedication.setValue(response.dedication);
+              this.editBookForm.controls.author.setValue(response.author);
+              this.editBookForm.controls.title.setValue(response.title);
+              console.log(response);
+            },
+            (error: any) => {                              //error() callback
+              alert(JSON.stringify(error));
+        
+            },
+            () => {                                   //complete() callback
+              console.log("complete");      //This is actually not needed
+        
+            });
+  }
+
+
   items = [
     {
         caption: 'Books',

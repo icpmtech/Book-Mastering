@@ -3,10 +3,8 @@ import {FormControl} from '@angular/forms';
 import {TuiComparator} from '@taiga-ui/addon-table';
 import {
     TUI_DEFAULT_MATCHER,
-    TuiDay,
     tuiDefaultSort,
     tuiIsFalsy,
-    tuiToInt,
 } from '@taiga-ui/cdk';
 import {TUI_ARROW} from '@taiga-ui/kit';
 import {BehaviorSubject, Observable} from 'rxjs';
@@ -15,49 +13,18 @@ import { SectionService } from '../section.service';
 import { ListSection } from '../models/ListSection';
 
 interface Section {
-    readonly name: string;
-    readonly dob: TuiDay;
+    readonly id: number;
+    readonly title: string;
 }
 
-const TODAY = TuiDay.currentLocal();
-const FIRST = [
-    'John',
-    'Jane',
-    'Jack',
-    'Jill',
-    'James',
-    'Joan',
-    'Jim',
-    'Julia',
-    'Joe',
-    'Julia',
-];
 
-const LAST = [
-    'Smith',
-    'West',
-    'Brown',
-    'Jones',
-    'Davis',
-    'Miller',
-    'Johnson',
-    'Jackson',
-    'Williams',
-    'Wilson',
-];
+type Key = 'id' | 'title' | 'body';
 
-type Key = 'age' | 'dob' | 'name';
 
-const DATA: readonly Section[] = Array.from({length: 300}, () => ({
-    name: `${LAST[Math.floor(Math.random() * 10)]}, ${
-        FIRST[Math.floor(Math.random() * 10)]
-    }`,
-    dob: TODAY.append({day: -Math.floor(Math.random() * 4000) - 7500}),
-}));
 const KEYS: Record<string, Key> = {
-    Name: 'name',
-    Age: 'age',
-    'Date of Birth': 'dob',
+    Id: 'id',
+    Title: 'title',
+    Body: 'body',
 };
 
 @Component({
@@ -67,11 +34,14 @@ const KEYS: Record<string, Key> = {
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ListSectionComponent {
+showDialogWithCustomButton(_t66: any) {
+throw new Error('Method not implemented.');
+}
     private readonly size$ = new BehaviorSubject(10);
     private readonly page$ = new BehaviorSubject(0);
 
     readonly direction$ = new BehaviorSubject<-1 | 1>(-1);
-    readonly sorter$ = new BehaviorSubject<Key>('name');
+    readonly sorter$ = new BehaviorSubject<Key>('id');
 
     readonly minAge = new FormControl(21);
 
@@ -89,11 +59,11 @@ export class ListSectionComponent {
        
 
     }
-    initial: readonly string[] = ['Name', 'Creation Date', 'Sections'];
+    initial: readonly string[] = ['Id', 'Title', 'Body','Actions'];
 
     enabled = this.initial;
 
-    columns = ['name', 'dob', 'age'];
+    columns = ['id', 'title', 'body','actions'];
 
     search = '';
 
@@ -133,25 +103,12 @@ export class ListSectionComponent {
         return !!this.search && TUI_DEFAULT_MATCHER(value, this.search);
     }
 
-    getAge(user: Section): number {
-        return getAge(user);
-    }
-
+  
     
 }
 
-function sortBy(key: 'age' | 'dob' | 'name', direction: -1 | 1): TuiComparator<Section> {
-    return (a, b) =>
-        key === 'age'
-            ? direction * tuiDefaultSort(getAge(a), getAge(b))
-            : direction * tuiDefaultSort(a[key], b[key]);
+function sortBy(key: 'id' | 'title', direction: -1 | 1): TuiComparator<Section> {
+    return (a, b) => direction * tuiDefaultSort(a[key], b[key]);
 }
 
-function getAge({dob}: Section): number {
-    const years = TODAY.year - dob.year;
-    const months = TODAY.month - dob.month;
-    const days = TODAY.day - dob.day;
-    const offset = tuiToInt(months > 0 || (!months && days > 9));
 
-    return years + offset;
-}

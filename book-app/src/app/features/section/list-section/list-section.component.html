@@ -25,27 +25,39 @@
             <table *ngIf="data$ | async as data" tuiTable class="table  tui-space_top-5" [columns]="columns" [direction]="(direction$ | async) || 1" [tuiSortBy]="sorter$ | async" (directionChange)="direction$.next($event)">
                 <thead>
                     <tr tuiThGroup>
-                        <th *tuiHead="'name'" tuiTh tuiSortable>
+                        <th *tuiHead="'id'" tuiTh tuiSortable>
+                            Id
+                        </th>
+                        <th *tuiHead="'title'" tuiTh tuiSortable>
                             Title
                         </th>
-                        <th *tuiHead="'dob'" tuiTh tuiSortable>
-                            Dedication
+                        <th *tuiHead="'body'" tuiTh tuiSortable>
+                            Body
                         </th>
-                        <th *tuiHead="'age'" tuiTh tuiSortable>
-                            Preface
+                        <th *tuiHead="'actions'" tuiTh tuiSortable>
+                            Actions
                         </th>
                     </tr>
                 </thead>
                 <tbody *tuiLet="data | tuiTableSort as sortedData" tuiTbody [data]="sortedData">
                     <tr *ngFor="let item of sortedData" tuiTr>
-                        <td *tuiCell="'name'" tuiTd [class.match]="isMatch(item.title)">
+                        <td *tuiCell="'id'" tuiTd [class.match]="isMatch(item.id)">
+                            {{ item.id }}
+                        </td>
+                        <td *tuiCell="'title'" tuiTd [class.match]="isMatch(item.title)">
                             {{ item.title }}
                         </td>
-                        <td *tuiCell="'dob'" tuiTd [class.match]="isMatch(item.dedication)">
-                            {{ item.dedication }}
+                        <td *tuiCell="'body'" tuiTd [class.match]="isMatch(item.body)">
+                            {{ item.body }}
                         </td>
-                        <td *tuiCell="'age'" tuiTd [class.match]="isMatch(item.preface)">
-                            {{ item.preface }}
+                        <td *tuiCell="'actions'" tuiTd>
+                            <a tuiButton type="button" size="xs" [routerLink]="['/section/edit-sections', item.id]">
+                                Edit Section
+                                </a>
+                            <button tuiButton type="button" size="xs" (click)="showDialogWithCustomButton(item)">
+                                        Delete Section
+                                        </button>
+
                         </td>
                     </tr>
                 </tbody>

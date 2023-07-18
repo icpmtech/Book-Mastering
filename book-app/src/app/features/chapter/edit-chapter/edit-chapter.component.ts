@@ -3,6 +3,7 @@ import { ChapterService } from '../chapter.service';
 import { SuggetionsChapterContent } from '../models/SuggetionsChapterContent';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { EditChapter } from '../models/EditChapter';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit-chapter',
@@ -16,24 +17,30 @@ export class EditChapterComponent {
   /**
    *
    */
-  constructor(private chapterService:ChapterService) {
-    this.chapterService.getChapterById(6).subscribe(
-      (response: any) => {                           //next() callback
-        console.log('response received')
-        this.editChapterForm.controls.id.setValue(response.id);
-        this.editChapterForm.controls.title.setValue(response.title);
-        this.editChapterForm.controls.body.setValue(response.body);
-        console.log(response);
-      },
-      (error: any) => {                              //error() callback
-        alert(JSON.stringify(error));
-  
-      },
-      () => {                                   //complete() callback
-        console.log("complete");      //This is actually not needed
-  
-      });
+  constructor(private chapterService:ChapterService,private router:Router) {
+    
   }
+
+  ngOnInit() {
+    const id=this.router.url.split('/')[3];
+          this.chapterService.getChapterById(id as any|number).subscribe(
+            (response: any) => {                           //next() callback
+              console.log('response received')
+              this.editChapterForm.controls.id.setValue(response.id);
+              this.editChapterForm.controls.title.setValue(response.title);
+              this.editChapterForm.controls.body.setValue(response.body);
+              console.log(response);
+            },
+            (error: any) => {                              //error() callback
+              alert(JSON.stringify(error));
+        
+            },
+            () => {                                   //complete() callback
+              console.log("complete");      //This is actually not needed
+        
+            });
+  }
+
   items = [
     {
         caption: 'Chapters',

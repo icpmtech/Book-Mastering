@@ -25,13 +25,13 @@
             <table *ngIf="data$ | async as data" tuiTable class="table  tui-space_top-5" [columns]="columns" [direction]="(direction$ | async) || 1" [tuiSortBy]="sorter$ | async" (directionChange)="direction$.next($event)">
                 <thead>
                     <tr tuiThGroup>
-                        <th *tuiHead="'name'" tuiTh tuiSortable>
+                        <th *tuiHead="'id'" tuiTh tuiSortable>
+                            Id
+                        </th>
+                        <th *tuiHead="'title'" tuiTh tuiSortable>
                             Title
                         </th>
-                        <th *tuiHead="'dob'" tuiTh tuiSortable>
-                            Dedication
-                        </th>
-                        <th *tuiHead="'age'" tuiTh tuiSortable>
+                        <th *tuiHead="'preface'" tuiTh tuiSortable>
                             Preface
                         </th>
                         <th *tuiHead="'actions'" tuiTh>
@@ -41,13 +41,13 @@
                 </thead>
                 <tbody *tuiLet="data | tuiTableSort as sortedData" tuiTbody [data]="sortedData">
                     <tr *ngFor="let item of sortedData" tuiTr>
-                        <td *tuiCell="'name'" tuiTd [class.match]="isMatch(item.title)">
+                        <td *tuiCell="'id'" tuiTd [class.match]="isMatch(item.id)">
+                            {{ item.id }}
+                        </td>
+                        <td *tuiCell="'title'" tuiTd [class.match]="isMatch(item.title)">
                             {{ item.title }}
                         </td>
-                        <td *tuiCell="'dob'" tuiTd [class.match]="isMatch(item.dedication)">
-                            {{ item.dedication }}
-                        </td>
-                        <td *tuiCell="'age'" tuiTd [class.match]="isMatch(item.preface)">
+                        <td *tuiCell="'preface'" tuiTd [class.match]="isMatch(item.preface)">
                             {{ item.preface }}
                         </td>
                         <td *tuiCell="'actions'" tuiTd>

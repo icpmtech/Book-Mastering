@@ -4,17 +4,26 @@ import { Observable } from 'rxjs';
 import { CreateSection } from './models/CreateSection';
 import { ListSection } from './models/ListSection';
 import { SuggetionsSectionContent } from './models/SuggetionsSectionContent';
+import { EditSection } from './models/EditSection';
 @Injectable({
   providedIn: 'root'
 })
 export class SectionService {
+  editSection(editSection: EditSection): Observable<EditSection> {
+    return this.http.put<EditSection>(`${this.pathAPI}BookSectionsModel`,editSection)
+  }
   createSection(createSection: CreateSection): Observable<CreateSection> {
-    return this.http.post<CreateSection>(`${this.pathAPI}SectionModel`,createSection)
+    return this.http.post<CreateSection>(`${this.pathAPI}BookSectionsModel`,createSection)
   }
 
   getSections(): Observable<ListSection[]> {
-    return this.http.get<ListSection[]>(`${this.pathAPI}SectionModel`)
+    return this.http.get<ListSection[]>(`${this.pathAPI}BookSectionsModel`)
   }
+
+  getSectionById(bookId?:number): Observable<EditSection> {
+    return this.http.get<EditSection>(`${this.pathAPI}BookSectionsModel/${bookId}`)
+  }
+
 
 pathAPI = "https://localhost:44394/api/";
 constructor( private http: HttpClient ) {
@@ -23,7 +32,7 @@ constructor( private http: HttpClient ) {
    
     let queryParams = new HttpParams();
     queryParams = queryParams.append("question",question);
-    return this.http.get<SuggetionsSectionContent[]>(`${this.pathAPI}ChapGPTService/GetTitles`,{params:queryParams})
+    return this.http.get<SuggetionsSectionContent[]>(`${this.pathAPI}ChapGPTService/GetSectionsSections`,{params:queryParams})
      
     
   }

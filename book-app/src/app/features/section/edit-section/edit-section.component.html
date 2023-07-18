@@ -1,1 +1,86 @@
-<p>edit-section works!</p>
+<tui-breadcrumbs>
+    <ng-container *ngFor="let item of items">
+        <a *tuiItem tuiLink [routerLink]="item.routerLink">
+            {{ item.caption }}
+        </a>
+    </ng-container>
+</tui-breadcrumbs>
+<section>
+    <div class="tui-container">
+        <tui-accordion-item class="container">
+            <h4 class="tui-form__header tui-form__header_margin-top_none">Title Suggestions</h4>
+            <ng-template tuiAccordionItemContent>
+                <div class="card shadow(4)">
+                    <form [formGroup]="titeSuggestionsForm" (ngSubmit)="titeSuggestionsForm.valid && submitGetSectionContentSuggestion()">
+                        <div class="tui-row tui-row_sme">
+                            <div class="tui-col_8">
+                                <div class="tui-form__row">
+                                    <tui-input formControlName="title" tuiHintContent="Ex:Give me titles to Section about ASP.NET Core and Angular 16">
+                                        Give me titles to my Section about YOUR BOOK MATTER
+                                        <input tuiTextfield placeholder="Field placeholder" />
+                                        <span class="tui-required"></span>
+                                    </tui-input>
+                                    <tui-error formControlName="title" [error]="[] | tuiFieldError | async"></tui-error>
+                                </div>
+                                <div style="float: right;" class="tui-form__buttons">
+
+                                    <button tuiButton size="m" type="submit" class="tui-form__button">
+                                Search
+                            </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <div *ngFor="let title of titles" class="formatted">
+                        <span>{{title.text}}</span>
+                    </div>
+                </div>
+            </ng-template>
+        </tui-accordion-item>
+    </div>
+</section>
+<section>
+    <div class="card tui-space_top-5  tui-container">
+        <form [formGroup]="editSectionForm" (ngSubmit)="editSectionForm.valid && submitEditSection()">
+            <div class="tui-row tui-row_sme">
+                <div class="tui-col_8">
+                    <h3 class="tui-form__header tui-form__header_margin-top_none">Edit Section</h3>
+                    <div class="tui-form__row">
+                        <tui-input formControlName="id" tuiHintContent="Id">
+                            Id
+                            <input tuiTextfield placeholder="Id placeholder" />
+                            <span class="tui-required"></span>
+                        </tui-input>
+                        <tui-error formControlName="id" [error]="[] | tuiFieldError | async"></tui-error>
+                    </div>
+                    <div class="tui-form__row">
+                        <tui-text-area formControlName="title" tuiHintContent="A tooltip">
+                            Title
+
+                            <span class="tui-required"></span>
+                        </tui-text-area>
+                        <tui-error formControlName="title" [error]="[] | tuiFieldError | async"></tui-error>
+                    </div>
+                    <div class="tui-form__row">
+                        <tui-text-area formControlName="body" tuiHintContent="A tooltip">
+                            Body Content
+
+                            <span class="tui-required"></span>
+                        </tui-text-area>
+                        <tui-error formControlName="body" [error]="[] | tuiFieldError | async"></tui-error>
+                    </div>
+
+                    <div style="float: right;" class="tui-form__buttons">
+
+                        <a tuiButton type="button" appearance="flat" size="m" routerLink="/chapter/list-chapters" class="tui-form__button">
+                            Cancel
+                    </a>
+                        <button tuiButton size="m" type="submit" class="tui-form__button">
+                    Edit
+                </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>

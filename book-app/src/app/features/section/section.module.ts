@@ -234,8 +234,8 @@ import { SectionService } from './section.service';
 const routes: Routes = [
 { path: 'list-sections', component: ListSectionComponent },
 { path: 'create-sections', component: CreateSectionComponent },
-{ path: 'edit-sections', component: EditSectionComponent },
-{ path: 'delete-sections', component: DeleteSectionComponent },
+{ path: 'edit-sections/:id', component: EditSectionComponent },
+{ path: 'delete-sections/:id', component: DeleteSectionComponent },
 
 ];
 export const ALL_TAIGA_UI_MODULES = [
