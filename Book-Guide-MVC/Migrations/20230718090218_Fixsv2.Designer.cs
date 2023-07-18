@@ -12,15 +12,15 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Book_Guide_MVC.Migrations
 {
     [DbContext(typeof(BookDbContext))]
-    [Migration("20230713213642_AddBooks")]
-    partial class AddBooks
+    [Migration("20230718090218_Fixsv2")]
+    partial class Fixsv2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.8")
+                .HasAnnotation("ProductVersion", "7.0.9")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -44,14 +44,14 @@ namespace Book_Guide_MVC.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("titleModelId")
+                    b.Property<int>("TitleModelId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("BookModelId");
 
-                    b.HasIndex("titleModelId");
+                    b.HasIndex("TitleModelId");
 
                     b.ToTable("BookChapters");
                 });
@@ -63,6 +63,10 @@ namespace Book_Guide_MVC.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Author")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Dedication")
                         .IsRequired()
@@ -102,11 +106,16 @@ namespace Book_Guide_MVC.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("BookChaptersModelId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("BookChaptersModelId");
 
                     b.ToTable("BookSections");
                 });
@@ -134,13 +143,13 @@ namespace Book_Guide_MVC.Migrations
                         .WithMany("Chapters")
                         .HasForeignKey("BookModelId");
 
-                    b.HasOne("Book_Guide_MVC.DAL.Entities.BookTitleModel", "titleModel")
+                    b.HasOne("Book_Guide_MVC.DAL.Entities.BookTitleModel", "TitleModel")
                         .WithMany()
-                        .HasForeignKey("titleModelId")
+                        .HasForeignKey("TitleModelId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("titleModel");
+                    b.Navigation("TitleModel");
                 });
 
             modelBuilder.Entity("Book_Guide_MVC.DAL.Entities.BookModel", b =>
@@ -152,6 +161,18 @@ namespace Book_Guide_MVC.Migrations
                         .IsRequired();
 
                     b.Navigation("Title");
+                });
+
+            modelBuilder.Entity("Book_Guide_MVC.DAL.Entities.BookSectionsModel", b =>
+                {
+                    b.HasOne("Book_Guide_MVC.DAL.Entities.BookChaptersModel", null)
+                        .WithMany("Sections")
+                        .HasForeignKey("BookChaptersModelId");
+                });
+
+            modelBuilder.Entity("Book_Guide_MVC.DAL.Entities.BookChaptersModel", b =>
+                {
+                    b.Navigation("Sections");
                 });
 
             modelBuilder.Entity("Book_Guide_MVC.DAL.Entities.BookModel", b =>

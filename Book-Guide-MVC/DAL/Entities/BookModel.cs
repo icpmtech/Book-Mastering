@@ -7,6 +7,7 @@
         public string TableContents { get; set; }
         public string Dedication { get; set; }
         public string Preface { get; set; }
+        public string Author { get; set; }
         public BookTitleModel Title { get; set; }
         public IList<BookChaptersModel> Chapters { get; set; }
 

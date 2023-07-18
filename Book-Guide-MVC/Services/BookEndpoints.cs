@@ -13,7 +13,7 @@ public static class BookEndpoints
 
         group.MapGet("/", async (BookDbContext db) =>
         {
-            return await db.Books.ToListAsync();
+            return await db.Books.Include( b => b.Title).Include(b => b.Chapters).ToListAsync();
         })
         .WithName("GetAllBookModels")
         .WithOpenApi();

@@ -2,11 +2,11 @@
 {
     public class BookChaptersModel
     {
-        public BookTitleModel titleModel { get; set; }
+        public BookTitleModel TitleModel { get; set; }
         public int Id { get; set; }
         public string Title { get; set; }
         public string Body { get; set; }
-        IList<BookSectionsModel>? sections { get; set; }
+        public IList<BookSectionsModel>? Sections { get; set; }
 
         
     }
