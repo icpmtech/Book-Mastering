@@ -70,6 +70,9 @@ const KEYS: Record<string, Key> = {
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ListChapterComponent {
+showDialogWithCustomButton(arg0: any) {
+throw new Error('Method not implemented.');
+}
     private readonly size$ = new BehaviorSubject(10);
     private readonly page$ = new BehaviorSubject(0);
 
@@ -96,7 +99,7 @@ export class ListChapterComponent {
 
     enabled = this.initial;
 
-    columns = ['name', 'dob', 'age'];
+    columns = ['id','title', 'body', 'actions'];
 
     search = '';
 

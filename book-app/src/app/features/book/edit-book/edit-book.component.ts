@@ -26,6 +26,8 @@ export class EditBookComponent {
         this.editBookForm.controls.url.setValue(response.url);
         this.editBookForm.controls.tableContents.setValue(response.tableContents);
         this.editBookForm.controls.dedication.setValue(response.dedication);
+        this.editBookForm.controls.author.setValue(response.author);
+        this.editBookForm.controls.title.setValue(response.title);
         console.log(response);
       },
       (error: any) => {                              //error() callback
@@ -56,7 +58,7 @@ editBookForm = new FormGroup({
   dedication: new FormControl(``, Validators.required),
   preface: new FormControl(``, Validators.required),
   title: new FormControl(``, Validators.required),
-
+  author: new FormControl(``, Validators.required),
 
 });
 
@@ -84,12 +86,12 @@ submitGetTitleSuggestions() {
 }
 submitEditBook() {
   const editBook= new EditBook();
-  editBook.title=new Title();
   editBook.url  = this.editBookForm.value.url as string;
  editBook.tableContents  = this.editBookForm.value.tableContents as string;
  editBook.dedication  = this.editBookForm.value.dedication as string;
  editBook.preface  = this.editBookForm.value.preface as string;
- editBook.title.title  = this.editBookForm.value.title as string;
+ editBook.title  = this.editBookForm.value.title as string;
+ editBook.author  = this.editBookForm.value.author as string;
   this.bookService.editBook(editBook)
   .subscribe(
     (response: any) => {                           //next() callback

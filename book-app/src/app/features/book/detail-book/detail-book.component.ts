@@ -28,6 +28,8 @@ bookId: any|number;
         this.detailBookForm.controls.url.setValue(response.url);
         this.detailBookForm.controls.tableContents.setValue(response.tableContents);
         this.detailBookForm.controls.dedication.setValue(response.dedication);
+        this.detailBookForm.controls.author.setValue(response.author);
+        this.detailBookForm.controls.title.setValue(response.title?.title);
         console.log(response);
       },
       (error: any) => {                              //error() callback
@@ -58,7 +60,7 @@ detailBookForm = new FormGroup({
   dedication: new FormControl(``, Validators.required),
   preface: new FormControl(``, Validators.required),
   title: new FormControl(``, Validators.required),
-
+  author: new FormControl(``, Validators.required),
 
 });
 

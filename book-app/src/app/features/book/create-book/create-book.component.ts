@@ -86,13 +86,12 @@ submitGetTitleSuggestions() {
 }
 submitCreateBook() {
   const createBook= new CreateBook();
-  createBook.title=new Title();
   createBook.url  = this.createBookForm.value.url as string;
  createBook.tableContents  = this.createBookForm.value.tableContents as string;
  createBook.dedication  = this.createBookForm.value.dedication as string;
  createBook.preface  = this.createBookForm.value.preface as string;
  createBook.author  = this.createBookForm.value.author as string;
- createBook.title.title  = this.createBookForm.value.title as string;
+ createBook.title  = this.createBookForm.value.title as string;
   this.bookService.createBook(createBook)
   .subscribe(
     (response: any) => {                           //next() callback

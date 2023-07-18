@@ -234,8 +234,8 @@ import { ChapterService } from './chapter.service';
 const routes: Routes = [
 { path: 'list-chapters', component: ListChapterComponent },
 { path: 'create-chapters', component: CreateChapterComponent },
-{ path: 'edit-chapters', component: EditChapterComponent },
-{ path: 'delete-chapters', component: DeleteChapterComponent },
+{ path: 'edit-chapter/:id', component: EditChapterComponent },
+{ path: 'delete-chapter/:id', component: DeleteChapterComponent },
 
 ];
 export const ALL_TAIGA_UI_MODULES = [

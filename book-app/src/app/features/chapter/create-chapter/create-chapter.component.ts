@@ -1,36 +1,13 @@
 import { Component} from '@angular/core';
-import {
-  TuiTablePaginationOptions,
-  tuiTablePaginationOptionsProvider,
-} from '@taiga-ui/addon-table';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {TuiCurrency} from '@taiga-ui/addon-commerce';
-import {TuiDay, TuiTime} from '@taiga-ui/cdk';
 import { ChapterService } from '../chapter.service';
-import { CreateChapter, Title } from '../models/CreateChapter';
+import { CreateChapter } from '../models/CreateChapter';
 import { SuggetionsChapterContent } from '../models/SuggetionsChapterContent';
-const customOptionContent: TuiTablePaginationOptions['sizeOptionContent'] = ({
-  $implicit,
-  total,
-}) => {
-  switch ($implicit) {
-      case 10:
-          return 'Ten';
-      case total:
-          return 'Show all rows';
-      default:
-          return $implicit;
-  }
-};
-
 
 @Component({
   selector: 'app-create-chapter',
   templateUrl: './create-chapter.component.html',
   styleUrls: ['./create-chapter.component.scss'],
-  providers: [
-    tuiTablePaginationOptionsProvider({sizeOptionContent: customOptionContent}),
-],
 })
 export class CreateChapterComponent {
   titles!: SuggetionsChapterContent[];
@@ -56,12 +33,9 @@ export class CreateChapterComponent {
 ];
 
 createChapterForm = new FormGroup({
-  url: new FormControl(``, Validators.required),
-  tableContents: new FormControl(``, Validators.required),
-  dedication: new FormControl(``, Validators.required),
-  preface: new FormControl(``, Validators.required),
+  
   title: new FormControl(``, Validators.required),
-  content: new FormControl(``, Validators.required)
+  body: new FormControl(``, Validators.required)
 });
 
 titeSuggestionsForm = new FormGroup({
@@ -88,12 +62,8 @@ submitGetChapterContentSuggestion() {
 }
 submitCreateChapter() {
   const createChapter= new CreateChapter();
-  createChapter.title=new Title();
-  createChapter.url  = this.createChapterForm.value.url as string;
- createChapter.tableContents  = this.createChapterForm.value.tableContents as string;
- createChapter.dedication  = this.createChapterForm.value.dedication as string;
- createChapter.preface  = this.createChapterForm.value.preface as string;
- createChapter.title.title  = this.createChapterForm.value.title as string;
+  createChapter.body  = this.createChapterForm.value.body as string;
+ createChapter.title  = this.createChapterForm.value.title as string;
   this.chapterService.createChapter(createChapter)
   .subscribe(
     (response: any) => {                           //next() callback

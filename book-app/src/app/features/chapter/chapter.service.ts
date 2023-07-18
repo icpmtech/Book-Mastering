@@ -12,22 +12,22 @@ export class ChapterService {
   deleteChapter(id: number): Observable<any> {
     let queryParams = new HttpParams();
     queryParams = queryParams.append("id",id);
-    return this.http.delete(`${this.pathAPI}ChapterModel`,{params:queryParams})
+    return this.http.delete(`${this.pathAPI}BookChaptersModel`,{params:queryParams})
   }
-  editBook(editChapter: EditChapter): Observable<EditChapter> {
-    return this.http.put<EditChapter>(`${this.pathAPI}ChapterModel`,editChapter)
+  editChapter(editChapter: EditChapter): Observable<EditChapter> {
+    return this.http.put<EditChapter>(`${this.pathAPI}BookChaptersModel`,editChapter)
   }
   getChapterById(chapterId?:number): Observable<EditChapter> {
-    return this.http.get<EditChapter>(`${this.pathAPI}ChapterModel/${chapterId}`)
+    return this.http.get<EditChapter>(`${this.pathAPI}BookChaptersModel/${chapterId}`)
   }
 
 
   createChapter(createChapter: CreateChapter): Observable<CreateChapter> {
-    return this.http.post<CreateChapter>(`${this.pathAPI}ChapterModel`,createChapter)
+    return this.http.post<CreateChapter>(`${this.pathAPI}BookChaptersModel`,createChapter)
   }
 
   getChapters(): Observable<ListChapter[]> {
-    return this.http.get<ListChapter[]>(`${this.pathAPI}ChapterModel`)
+    return this.http.get<ListChapter[]>(`${this.pathAPI}BookChaptersModel`)
   }
 
 pathAPI = "https://localhost:44394/api/";
@@ -37,7 +37,7 @@ constructor( private http: HttpClient ) {
    
     let queryParams = new HttpParams();
     queryParams = queryParams.append("question",question);
-    return this.http.get<SuggetionsChapterContent[]>(`${this.pathAPI}ChapGPTService/GetTitles`,{params:queryParams})
+    return this.http.get<SuggetionsChapterContent[]>(`${this.pathAPI}ChapGPTService/GetChapters`,{params:queryParams})
      
     
   }

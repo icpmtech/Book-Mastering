@@ -97,8 +97,8 @@ export class ListBookComponent {
 
     showDialogWithCustomButton(itemBook:ListBook): void {
         this.dialogs
-            .open(`You are sure you want delete the  book: ${itemBook.title?.title}`, {
-                label: `Delete Book:${itemBook.title?.title}`,
+            .open(`You are sure you want delete the  book: ${itemBook.title}`, {
+                label: `Delete Book:${itemBook.title}`,
                 size: 's',
                 data: {button: 'Delete'},
                 closeable:true

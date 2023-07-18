@@ -4,7 +4,7 @@ export class EditBook {
   tableContents?: string
   dedication?: string
   preface?: string
-  title?: Title
+  title?: string
   chapters?: Chapter[]
   author?: string
 }

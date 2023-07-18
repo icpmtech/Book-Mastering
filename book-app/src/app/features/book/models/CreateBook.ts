@@ -4,9 +4,9 @@ export class CreateBook {
   tableContents?: string
   dedication?: string
   preface?: string
-  title?: Title
   chapters?: Chapter[]
   author?: string
+  title?: string
 }
 
 export class Title {
