@@ -19,7 +19,7 @@ export const environment = {
       secretId: 'fake-secret-id', // <Your auth secret id here>
 
       // keys to store tokens at local storage
-      accessTokenKey: 'DoPS3ZrQjM',
+      accessTokenKey: 'ABCXYZ',
       refreshTokenKey: 'nmlP8PW2nb',
     },
   },

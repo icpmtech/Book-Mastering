@@ -58,11 +58,11 @@ export class AuthEffects {
   getUser$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(AuthActions.refreshTokenSuccess, AuthActions.getAuthUserRequest),
-      exhaustMap(() =>
-        this.authService.getAuthUser().pipe(
+      exhaustMap(() => {
+        return this.authService.getAuthUser().pipe(
           map(user => AuthActions.getAuthUserSuccess({ user })),
           catchError(() => of(AuthActions.getAuthUserFailure()))
-        )
+        );}
       )
     );
   });

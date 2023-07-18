@@ -28,7 +28,7 @@ const routes: Routes = [
   },
   {
     path: 'book',
-   // canActivate: [AuthGuardService],
+   canActivate: [AuthGuardService],
     loadChildren: () =>
       import('./features/book/book.module').then(
         m => m.BookModule
@@ -36,7 +36,7 @@ const routes: Routes = [
   },
   {
     path: 'chapter',
-   // canActivate: [AuthGuardService],
+   canActivate: [AuthGuardService],
     loadChildren: () =>
       import('./features/chapter/chapter.module').then(
         m => m.ChapterModule
@@ -44,7 +44,7 @@ const routes: Routes = [
   },
   {
     path: 'section',
-   // canActivate: [AuthGuardService],
+   canActivate: [AuthGuardService],
     loadChildren: () =>
       import('./features/section/section.module').then(
         m => m.SectionModule

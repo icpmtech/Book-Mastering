@@ -64,7 +64,7 @@ export class AuthService {
    * @returns Observable<AccessData>
    */
   login(username: string, password: string): Observable<AccessData> {
-    return this.http.post<AccessData>(`${this.hostUrl}/api/auth/login`, {
+    return this.http.post<AccessData>(`https://localhost:44394/api/Login/login`, {
       client_id: this.clientId,
       client_secret: this.clientSecret,
       grant_type: 'password',
