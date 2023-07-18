@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, TemplateRef,Inject, Injector} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {TuiComparator} from '@taiga-ui/addon-table';
 import {
@@ -16,8 +16,10 @@ import {debounceTime, filter, map, share, startWith, switchMap} from 'rxjs/opera
 import { BookService } from '../book.service';
 import { CreateBook } from '../models/CreateBook';
 import { ListBook } from '../models/ListBook';
-import { TuiDialogService } from '@taiga-ui/core';
-
+import { TuiDialogContext, TuiDialogService } from '@taiga-ui/core';
+import { ModalAddChapterToBookComponent } from '../modal/modal-add-chapter-book.component';
+import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
+import { EditBook } from '../models/EditBook';
 interface Book {
     readonly id: number;
     readonly title: string;
@@ -39,6 +41,7 @@ const KEYS: Record<string, Key> = {
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ListBookComponent {
+
     private readonly size$ = new BehaviorSubject(10);
     private readonly pbody$ = new BehaviorSubject(0);
 
@@ -53,15 +56,35 @@ export class ListBookComponent {
          return response;
         },
        );
+    selectedBook?: EditBook;
 
     /**
      *
      */
-    constructor(private bookService:BookService,private readonly dialogs: TuiDialogService) {
-       
-
+    constructor(private bookService:BookService, @Inject(TuiDialogService) private readonly dialogs: TuiDialogService,
+    @Inject(Injector) private readonly injector: Injector,) {
     }
+
   
+
+    showDialog(item: any): void {
+      const  dialog =this.dialogs.open<EditBook>(
+            new PolymorpheusComponent(ModalAddChapterToBookComponent, this.injector),
+            {
+                data: item,
+                dismissible: true,
+                label: 'Add Chapter to Book',
+            },
+        );
+        dialog.subscribe({
+            next: data => {
+                console.info(`Dialog emitted data = ${item}`);
+            },
+            complete: () => {
+                console.info('Dialog closed');
+            },
+        });
+    }
 
     showDialogWithCustomButton(itemBook:ListBook): void {
         this.dialogs

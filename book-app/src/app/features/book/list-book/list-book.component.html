@@ -52,14 +52,17 @@
                         </td>
                         <td *tuiCell="'actions'" tuiTd>
                             <a tuiButton type="button" size="xs" [routerLink]="['/book/edit-books', item.id]">
-                                Edit Book
-                                </a>
+                                Edit Book 
+                                </a> |
                             <a tuiButton type="button" size="xs" [routerLink]="['/book/detail-books', item.id]">
                                     Detail Book
-                                    </a>
+                                    </a> |
                             <button tuiButton type="button" size="xs" (click)="showDialogWithCustomButton(item)">
                                         Delete Book
-                                        </button>
+                                        </button> |
+                            <button tuiButton type="button" size="xs" (click)="showDialog(item)">
+                                            Add Chapter To Book
+                                            </button>
 
                         </td>
                     </tr>

@@ -1,0 +1,16 @@
+<p class="text">
+    Book Title:{{data.title}}
+</p>
+
+<tui-select tuiTextfieldSize="m" class="tui-space_top-3 tui-space_bottom-5" [tuiTextfieldLabelOutside]="true" [valueContent]="itemContent" [(ngModel)]="value">
+    Select a chapter
+    <tui-data-list-wrapper *tuiDataList [items]="items" [itemContent]="itemContent"></tui-data-list-wrapper>
+</tui-select>
+<ng-template #itemContent let-data>
+    <div>
+        <p>{{data.title}}</p>
+    </div>
+</ng-template>
+<button tuiButton type="button" size="m" [disabled]="!hasValue" (click)="submit()">
+    Submit
+</button>

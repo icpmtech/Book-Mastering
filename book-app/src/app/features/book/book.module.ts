@@ -232,13 +232,14 @@ import {
 import { RouterModule, Routes } from '@angular/router';
 import { BookService } from './book.service';
 import { DetailBookComponent } from './detail-book/detail-book.component';
+import { ModalAddChapterToBookComponent } from './modal/modal-add-chapter-book.component';
 const routes: Routes = [
 { path: 'list-books', component: ListBookComponent },
 { path: 'create-books', component: CreateBookComponent },
 { path: 'edit-books/:id', component: EditBookComponent },
 { path: 'detail-books/:id', component: DetailBookComponent },
 { path: 'delete-books/:id', component: DeleteBookComponent },
-
+{ path: 'add-chapter-book/:id', component: ModalAddChapterToBookComponent },
 ];
 export const ALL_TAIGA_UI_MODULES = [
 
@@ -459,7 +460,7 @@ export const ALL_TAIGA_UI_MODULES = [
   
 ];
 @NgModule({
-  declarations: [ListBookComponent, CreateBookComponent, EditBookComponent, DeleteBookComponent,DetailBookComponent ],
+  declarations: [ListBookComponent, CreateBookComponent, EditBookComponent, DeleteBookComponent,DetailBookComponent,ModalAddChapterToBookComponent ],
   providers: [BookService],
   imports: [
     CommonModule,
