@@ -6,6 +6,7 @@ export class CreateBook {
   preface?: string
   title?: Title
   chapters?: Chapter[]
+  author?: string
 }
 
 export class Title {

@@ -55,40 +55,8 @@
                         <tui-error formControlName="title" [error]="[] | tuiFieldError | async"></tui-error>
                     </div>
                     <div class="tui-form__row">
-                        <tui-input formControlName="url" tuiHintContent="A tooltip">
-                            Url
-                            <input tuiTextfield placeholder="Field placeholder" />
-                            <span class="tui-required"></span>
-                        </tui-input>
-                        <tui-error formControlName="url" [error]="[] | tuiFieldError | async"></tui-error>
-                    </div>
-                    <div class="tui-form__row">
-                        <tui-input formControlName="dedication" tuiHintContent="A tooltip">
-                            Dedication
-                            <input tuiTextfield placeholder="Field placeholder" />
-                            <span class="tui-required"></span>
-                        </tui-input>
-                        <tui-error formControlName="dedication" [error]="[] | tuiFieldError | async"></tui-error>
-                    </div>
-                    <div class="tui-form__row">
-                        <tui-input formControlName="preface" tuiHintContent="A tooltip">
-                            Preface
-                            <input tuiTextfield placeholder="Field placeholder" />
-                            <span class="tui-required"></span>
-                        </tui-input>
-                        <tui-error formControlName="preface" [error]="[] | tuiFieldError | async"></tui-error>
-                    </div>
-                    <div class="tui-form__row">
-                        <tui-input formControlName="tableContents" tuiHintContent="A tooltip">
-                            Table Contents
-                            <input tuiTextfield placeholder="Field placeholder" />
-                            <span class="tui-required"></span>
-                        </tui-input>
-                        <tui-error formControlName="tableContents" [error]="[] | tuiFieldError | async"></tui-error>
-                    </div>
-                    <div class="tui-form__row">
                         <tui-text-area formControlName="content" [expandable]="true" tuiHintContent="A tooltip">
-                            Type a text
+                            Body Content
                             <span class="tui-required"></span>
                         </tui-text-area>
                         <tui-error formControlName="content" [error]="[] | tuiFieldError | async"></tui-error>

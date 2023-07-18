@@ -1,16 +1,16 @@
 <section>
-    <h2 class="book--mb-4">Chapters List</h2>
+    <h2 class="book--mb-4">Sections List</h2>
     <div class="card">
 
-        <a tuiButton type="button" routerLink="/chapter/create-chapters" class="book--mb-8 tui-space_horizontal-3">
-    Create Chapter
+        <a tuiButton type="button" routerLink="/section/create-sections" class="book--mb-8 tui-space_horizontal-3">
+    Create Section
     </a>
         <p tuiTextfieldSize="m" class="filters">
             <tui-input class="input" [tuiTextfieldCleaner]="true" [(ngModel)]="search">
                 Find on page
             </tui-input>
             <tui-input-count class="tui-space_horizontal-3" [formControl]="minAge">
-                Minimum chapters
+                Minimum sections
             </tui-input-count>
             <tui-hosted-dropdown [content]="dropdown">
                 <button tuiButton size="m" type="button" [iconRight]="arrow">

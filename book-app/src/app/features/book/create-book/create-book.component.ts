@@ -59,7 +59,7 @@ createBookForm = new FormGroup({
   dedication: new FormControl(``, Validators.required),
   preface: new FormControl(``, Validators.required),
   title: new FormControl(``, Validators.required),
-
+  author: new FormControl(``, Validators.required),
 });
 
 titeSuggestionsForm = new FormGroup({
@@ -91,6 +91,7 @@ submitCreateBook() {
  createBook.tableContents  = this.createBookForm.value.tableContents as string;
  createBook.dedication  = this.createBookForm.value.dedication as string;
  createBook.preface  = this.createBookForm.value.preface as string;
+ createBook.author  = this.createBookForm.value.author as string;
  createBook.title.title  = this.createBookForm.value.title as string;
   this.bookService.createBook(createBook)
   .subscribe(

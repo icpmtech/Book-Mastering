@@ -70,6 +70,14 @@
                         <tui-error formControlName="url" [error]="[] | tuiFieldError | async"></tui-error>
                     </div>
                     <div class="tui-form__row">
+                        <tui-input formControlName="author" tuiHintContent="An author">
+                            Author
+                            <input tuiTextfield placeholder="Author" />
+                            <span class="tui-required"></span>
+                        </tui-input>
+                        <tui-error formControlName="url" [error]="[] | tuiFieldError | async"></tui-error>
+                    </div>
+                    <div class="tui-form__row">
                         <tui-text-area formControlName="dedication" tuiHintContent="A tooltip"> Dedication
 
                             <span class="tui-required"></span>
