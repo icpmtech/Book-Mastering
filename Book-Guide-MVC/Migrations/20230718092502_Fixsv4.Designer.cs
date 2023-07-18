@@ -4,6 +4,7 @@ using Book_Guide_MVC.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Book_Guide_MVC.Migrations
 {
     [DbContext(typeof(BookDbContext))]
-    partial class BookDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230718092502_Fixsv4")]
+    partial class Fixsv4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -41,9 +44,14 @@ namespace Book_Guide_MVC.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("TitleModelId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("BookModelId");
+
+                    b.HasIndex("TitleModelId");
 
                     b.ToTable("BookChapters");
                 });
@@ -133,6 +141,14 @@ namespace Book_Guide_MVC.Migrations
                     b.HasOne("Book_Guide_MVC.DAL.Entities.BookModel", null)
                         .WithMany("Chapters")
                         .HasForeignKey("BookModelId");
+
+                    b.HasOne("Book_Guide_MVC.DAL.Entities.BookTitleModel", "TitleModel")
+                        .WithMany()
+                        .HasForeignKey("TitleModelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("TitleModel");
                 });
 
             modelBuilder.Entity("Book_Guide_MVC.DAL.Entities.BookSectionsModel", b =>

@@ -18,7 +18,6 @@ public static class BookChaptersEndpoints
         {
             return await db.BookChapters.ToListAsync();
         })
-        .RequireAuthorization( )
         .WithName("GetAllBookChaptersModels")
         .WithOpenApi();
 

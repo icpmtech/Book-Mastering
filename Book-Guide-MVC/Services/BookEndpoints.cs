@@ -13,7 +13,7 @@ public static class BookEndpoints
 
         group.MapGet("/", async (BookDbContext db) =>
         {
-            return await db.Books.Include( b => b.Title).Include(b => b.Chapters).ToListAsync();
+            return await db.Books.Include(b => b.Chapters).ToListAsync();
         })
         .WithName("GetAllBookModels")
         .WithOpenApi();
@@ -32,7 +32,7 @@ public static class BookEndpoints
         group.MapPut("/{id}", async Task<Results<Ok, NotFound>> (int id, BookModel bookModel, BookDbContext db) =>
         {
             var affected = await db.Books
-                .Where(model => model.Id == id)
+                .Where(model => model.Id == id).Include(b => b.Title).Include(b => b.Chapters)
                 .ExecuteUpdateAsync(setters => setters
                   .SetProperty(m => m.Id, bookModel.Id)
                   .SetProperty(m => m.Url, bookModel.Url)
