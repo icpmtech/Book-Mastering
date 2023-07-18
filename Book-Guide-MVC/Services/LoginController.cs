@@ -20,22 +20,23 @@ namespace Book_Guide_MVC.Services
                 if (string.IsNullOrEmpty(loginViewodel.UserName) ||
                 string.IsNullOrEmpty(loginViewodel.Password))
                     return BadRequest("Username and/or Password not specified");
-                if (loginViewodel.UserName.Equals("bookhelper") &&
-                loginViewodel.Password.Equals("bookhelper"))
+                if (loginViewodel.UserName.Equals("admin") &&
+                loginViewodel.Password.Equals("demo"))
                 {
                     var secretKey = new SymmetricSecurityKey
                     (Encoding.UTF8.GetBytes("thisisasecretkey@123"));
                     var signinCredentials = new SigningCredentials
                    (secretKey, SecurityAlgorithms.HmacSha256);
                     var jwtSecurityToken = new JwtSecurityToken(
-                        issuer: "ABCXYZ",
-                       // audience: "http://localhost:4200",
+                        issuer: "http://localhost:4200",
+                        audience: "http://localhost:4200",
                         claims: new List<Claim>(),
                         expires: DateTime.Now.AddMinutes(10),
                         signingCredentials: signinCredentials
                     );
-                  return   Ok(new JwtSecurityTokenHandler().
-                    WriteToken(jwtSecurityToken));
+                    var tokenString = new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken);
+                    return Ok(new AuthenticatedResponse { Token = tokenString });
+              
                 }
             }
             catch

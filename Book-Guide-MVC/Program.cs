@@ -8,6 +8,8 @@ using Microsoft.CodeAnalysis.Options;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.CodeAnalysis;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace Book_Guide_MVC
 {
@@ -22,11 +24,24 @@ namespace Book_Guide_MVC
 
             builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme,
-        options => builder.Configuration.Bind("JwtSettings", options))
+        options => {
+            options.TokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuer = true,
+                ValidateAudience = true,
+                ValidateLifetime = true,
+                ValidateIssuerSigningKey = true,
+                ValidIssuer = "https://localhost:4200",
+                ValidAudience = "https://localhost:4200",
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"))
+            };
+            builder.Configuration.Bind("JwtSettings", options);
+            }
+        )
     .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme,
         options => {
             options.AccessDeniedPath = "api/denied";
-            options.LoginPath = "api/login";
+            options.LoginPath = "api/Login/login";
             builder.Configuration.Bind("CookieSettings", options);
         });
 
