@@ -12,6 +12,11 @@ export class BookService {
   editBook(editBook: EditBook): Observable<EditBook> {
     return this.http.put<EditBook>(`${this.pathAPI}BookModel`,editBook)
   }
+  deleteBook(id: number): Observable<any> {
+    let queryParams = new HttpParams();
+    queryParams = queryParams.append("id",id);
+    return this.http.delete(`${this.pathAPI}BookModel`,{params:queryParams})
+  }
   createBook(createBook: CreateBook): Observable<CreateBook> {
     return this.http.post<CreateBook>(`${this.pathAPI}BookModel`,createBook)
   }

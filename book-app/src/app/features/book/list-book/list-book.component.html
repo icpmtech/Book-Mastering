@@ -41,8 +41,8 @@
                 </thead>
                 <tbody *tuiLet="data | tuiTableSort as sortedData" tuiTbody [data]="sortedData">
                     <tr *ngFor="let item of sortedData" tuiTr>
-                        <td *tuiCell="'name'" tuiTd [class.match]="isMatch(item.title)">
-                            {{ item.title }}
+                        <td *tuiCell="'name'" tuiTd [class.match]="isMatch(item.title?.title)">
+                            {{ item.title?.title }}
                         </td>
                         <td *tuiCell="'dob'" tuiTd [class.match]="isMatch(item.dedication)">
                             {{ item.dedication }}
@@ -57,9 +57,10 @@
                             <a tuiButton type="button" size="xs" [routerLink]="['/book/detail-books', item.id]">
                                     Detail Book
                                     </a>
-                            <a tuiButton type="button" size="xs" [routerLink]="['/book/delete-books', item.id]">
+                            <button tuiButton type="button" size="xs" (click)="showDialogWithCustomButton(item)">
                                         Delete Book
-                                        </a>
+                                        </button>
+
                         </td>
                     </tr>
                 </tbody>

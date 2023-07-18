@@ -16,6 +16,7 @@ import {debounceTime, filter, map, share, startWith, switchMap} from 'rxjs/opera
 import { BookService } from '../book.service';
 import { CreateBook } from '../models/CreateBook';
 import { ListBook } from '../models/ListBook';
+import { TuiDialogService } from '@taiga-ui/core';
 
 interface Book {
     readonly name: string;
@@ -88,9 +89,21 @@ export class ListBookComponent {
     /**
      *
      */
-    constructor(private bookService:BookService) {
+    constructor(private bookService:BookService,private readonly dialogs: TuiDialogService) {
        
 
+    }
+  
+
+    showDialogWithCustomButton(itemBook:ListBook): void {
+        this.dialogs
+            .open(`You are sure you want delete the  book: ${itemBook.title?.title}`, {
+                label: `Delete Book:${itemBook.title?.title}`,
+                size: 's',
+                data: {button: 'Delete'},
+                closeable:true
+            })
+            .subscribe();
     }
     initial: readonly string[] = ['Name', 'Creation Date', 'Chapters'];
 
