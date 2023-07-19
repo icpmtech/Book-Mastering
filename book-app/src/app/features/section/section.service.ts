@@ -9,9 +9,16 @@ import { EditSection } from './models/EditSection';
   providedIn: 'root'
 })
 export class SectionService {
+  deleteChapter(id: number): Observable<any> {
+    let queryParams = new HttpParams();
+    queryParams = queryParams.append("id",id);
+    return this.http.delete(`${this.pathAPI}BookSectionsModel`,{params:queryParams})
+  }
+
   editSection(editSection: EditSection): Observable<EditSection> {
     return this.http.put<EditSection>(`${this.pathAPI}BookSectionsModel`,editSection)
   }
+
   createSection(createSection: CreateSection): Observable<CreateSection> {
     return this.http.post<CreateSection>(`${this.pathAPI}BookSectionsModel`,createSection)
   }

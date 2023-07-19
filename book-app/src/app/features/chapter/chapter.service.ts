@@ -17,6 +17,7 @@ export class ChapterService {
   editChapter(editChapter: EditChapter): Observable<EditChapter> {
     return this.http.put<EditChapter>(`${this.pathAPI}BookChaptersModel`,editChapter)
   }
+  
   getChapterById(chapterId?:number): Observable<EditChapter> {
     return this.http.get<EditChapter>(`${this.pathAPI}BookChaptersModel/${chapterId}`)
   }
