@@ -11,16 +11,16 @@
             <h4 class="tui-form__header tui-form__header_margin-top_none">Content Suggestion</h4>
             <ng-template tuiAccordionItemContent>
                 <div class="card shadow(4)">
-                    <form [formGroup]="titeSuggestionsForm" (ngSubmit)="titeSuggestionsForm.valid && submitGetChapterContentSuggestion()">
+                    <form [formGroup]="contentSuggestionsForm" (ngSubmit)="contentSuggestionsForm.valid && submitGetChapterContentSuggestion()">
                         <div class="tui-row tui-row_sme">
                             <div class="tui-col_8">
                                 <div class="tui-form__row">
-                                    <tui-input formControlName="title" tuiHintContent="Ex:Give me titlesGive me content  to Chapter about ASP.NET Core 7.0 and Angular 16">
+                                    <tui-input formControlName="content" tuiHintContent="Ex:Give me Give me content  to Chapter about ASP.NET Core 7.0 and Angular 16">
                                         Give me content to my Chapter about YOUR Chapter MATTER
                                         <input tuiTextfield placeholder="Field placeholder" />
                                         <span class="tui-required"></span>
                                     </tui-input>
-                                    <tui-error formControlName="title" [error]="[] | tuiFieldError | async"></tui-error>
+                                    <tui-error formControlName="content" [error]="[] | tuiFieldError | async"></tui-error>
                                 </div>
                                 <div style="float: right;" class="tui-form__buttons">
 
@@ -31,8 +31,8 @@
                             </div>
                         </div>
                     </form>
-                    <div *ngFor="let title of titles" class="formatted">
-                        <span>{{title.text}}</span>
+                    <div *ngFor="let content of contents" class="formatted">
+                        <span>{{content.text}}</span>
                     </div>
                 </div>
             </ng-template>

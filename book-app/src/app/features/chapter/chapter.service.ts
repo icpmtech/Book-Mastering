@@ -34,7 +34,7 @@ export class ChapterService {
 pathAPI = "https://localhost:44394/api/";
 constructor( private http: HttpClient ) {
 }
-  getTitles (question: any): Observable<any> {
+  getContent (question: any): Observable<any> {
    
     let queryParams = new HttpParams();
     queryParams = queryParams.append("question",question);

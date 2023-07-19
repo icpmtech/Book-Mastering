@@ -10,7 +10,7 @@ import { SuggetionsChapterContent } from '../models/SuggetionsChapterContent';
   styleUrls: ['./create-chapter.component.scss'],
 })
 export class CreateChapterComponent {
-  titles!: SuggetionsChapterContent[];
+  contents!: SuggetionsChapterContent[];
 
   /**
    *
@@ -38,17 +38,17 @@ createChapterForm = new FormGroup({
   body: new FormControl(``, Validators.required)
 });
 
-titeSuggestionsForm = new FormGroup({
-  title: new FormControl(``, Validators.required),
+contentSuggestionsForm = new FormGroup({
+  content: new FormControl(``, Validators.required),
 
 });
 submitGetChapterContentSuggestion() {
-  const  question  = this.titeSuggestionsForm.value.title as string;
-  this.chapterService.getTitles(question)
+  const  question  = this.contentSuggestionsForm.value.content as string;
+  this.chapterService.getContent(question)
   .subscribe(
     (response: any) => {                           //next() callback
       console.log('response received')
-      this.titles = response as SuggetionsChapterContent[];
+      this.contents = response as SuggetionsChapterContent[];
       console.log(response);
     },
     (error: any) => {                              //error() callback
