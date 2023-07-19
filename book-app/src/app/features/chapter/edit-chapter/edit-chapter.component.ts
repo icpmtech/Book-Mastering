@@ -66,7 +66,7 @@ titeSuggestionsForm = new FormGroup({
 });
 submitGetTitleSuggestions() {
   const  question  = this.titeSuggestionsForm.value.title as string;
-  this.chapterService.getTitles(question)
+  this.chapterService.getContent(question)
   .subscribe(
     (response: any) => {                           //next() callback
       console.log('response received')
