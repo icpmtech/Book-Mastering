@@ -39,7 +39,7 @@ constructor( private http: HttpClient ) {
    
     let queryParams = new HttpParams();
     queryParams = queryParams.append("question",question);
-    return this.http.get<SuggetionsSectionContent[]>(`${this.pathAPI}ChapGPTService/GetSectionsSections`,{params:queryParams})
+    return this.http.get<SuggetionsSectionContent[]>(`${this.pathAPI}ChaptGPTService/GetSectionsSections`,{params:queryParams})
      
     
   }
