@@ -60,12 +60,12 @@ editChapterForm = new FormGroup({
 
 });
 
-titeSuggestionsForm = new FormGroup({
-  title: new FormControl(``, Validators.required),
+contentSuggestionsForm = new FormGroup({
+  content: new FormControl(``, Validators.required),
 
 });
-submitGetTitleSuggestions() {
-  const  question  = this.titeSuggestionsForm.value.title as string;
+submitGetContentSuggestions() {
+  const  question  = this.contentSuggestionsForm.value.content as string;
   this.chapterService.getContent(question)
   .subscribe(
     (response: any) => {                           //next() callback

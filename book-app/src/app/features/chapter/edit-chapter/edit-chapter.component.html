@@ -11,16 +11,16 @@
             <h4 class="tui-form__header tui-form__header_margin-top_none">Title Suggestions</h4>
             <ng-template tuiAccordionItemContent>
                 <div class="card shadow(4)">
-                    <form [formGroup]="titeSuggestionsForm" (ngSubmit)="titeSuggestionsForm.valid && submitGetTitleSuggestions()">
+                    <form [formGroup]="contentSuggestionsForm" (ngSubmit)="contentSuggestionsForm.valid && submitGetContentSuggestions()">
                         <div class="tui-row tui-row_sme">
                             <div class="tui-col_8">
                                 <div class="tui-form__row">
-                                    <tui-input formControlName="title" tuiHintContent="Ex:Give me titles to Chapter about ASP.NET Core and Angular 16">
-                                        Give me titles to my Chapter about YOUR BOOK MATTER
+                                    <tui-input formControlName="content" tuiHintContent="Ex:Give me content to Chapter about ASP.NET Core and Angular 16">
+                                        Give me content to my Chapter about YOUR BOOK MATTER
                                         <input tuiTextfield placeholder="Field placeholder" />
                                         <span class="tui-required"></span>
                                     </tui-input>
-                                    <tui-error formControlName="title" [error]="[] | tuiFieldError | async"></tui-error>
+                                    <tui-error formControlName="content" [error]="[] | tuiFieldError | async"></tui-error>
                                 </div>
                                 <div style="float: right;" class="tui-form__buttons">
 
