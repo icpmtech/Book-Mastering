@@ -11,10 +11,10 @@ namespace Book_Guide_MVC.Services
   
     [Route("api/[controller]")]
     [ApiController]
-    public class ChapGPTServiceController : ControllerBase
+    public class ChatGPTServiceController : ControllerBase
     {
-        private ILogger<ChapGPTServiceController> _logger;
-        public ChapGPTServiceController(ILogger<ChapGPTServiceController> logger)
+        private ILogger<ChatGPTServiceController> _logger;
+        public ChatGPTServiceController(ILogger<ChatGPTServiceController> logger)
         {
             _logger = logger;
         }
