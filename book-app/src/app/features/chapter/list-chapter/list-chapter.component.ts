@@ -3,64 +3,28 @@ import {FormControl} from '@angular/forms';
 import {TuiComparator} from '@taiga-ui/addon-table';
 import {
     TUI_DEFAULT_MATCHER,
-    tuiControlValue,
-    TuiDay,
     tuiDefaultSort,
     tuiIsFalsy,
-    tuiIsPresent,
-    tuiToInt,
 } from '@taiga-ui/cdk';
 import {TUI_ARROW} from '@taiga-ui/kit';
-import {BehaviorSubject, combineLatest, Observable, timer} from 'rxjs';
-import {debounceTime, filter, map, share, startWith, switchMap} from 'rxjs/operators';
+import {BehaviorSubject,  Observable} from 'rxjs';
+import { map} from 'rxjs/operators';
 import { ChapterService } from '../chapter.service';
-import { CreateChapter } from '../models/CreateChapter';
 import { ListChapter } from '../models/ListChapter';
 
 interface Chapter {
-    readonly name: string;
-    readonly dob: TuiDay;
+    readonly id: number;
+    readonly title: string;
 }
 
-const TODAY = TuiDay.currentLocal();
-const FIRST = [
-    'John',
-    'Jane',
-    'Jack',
-    'Jill',
-    'James',
-    'Joan',
-    'Jim',
-    'Julia',
-    'Joe',
-    'Julia',
-];
 
-const LAST = [
-    'Smith',
-    'West',
-    'Brown',
-    'Jones',
-    'Davis',
-    'Miller',
-    'Johnson',
-    'Jackson',
-    'Williams',
-    'Wilson',
-];
 
-type Key = 'age' | 'dob' | 'name';
+type Key = 'id' | 'title';
 
-const DATA: readonly Chapter[] = Array.from({length: 300}, () => ({
-    name: `${LAST[Math.floor(Math.random() * 10)]}, ${
-        FIRST[Math.floor(Math.random() * 10)]
-    }`,
-    dob: TODAY.append({day: -Math.floor(Math.random() * 4000) - 7500}),
-}));
+
 const KEYS: Record<string, Key> = {
-    Name: 'name',
-    Age: 'age',
-    'Date of Birth': 'dob',
+    Id: 'id',
+    Title: 'title',
 };
 
 @Component({
@@ -77,7 +41,7 @@ throw new Error('Method not implemented.');
     private readonly page$ = new BehaviorSubject(0);
 
     readonly direction$ = new BehaviorSubject<-1 | 1>(-1);
-    readonly sorter$ = new BehaviorSubject<Key>('name');
+    readonly sorter$ = new BehaviorSubject<Key>('title');
 
     readonly minAge = new FormControl(21);
 
@@ -109,12 +73,7 @@ throw new Error('Method not implemented.');
 
     
 
-    readonly data$: Observable<readonly ListChapter[]> =this.chapterService.getChapters().pipe(
-        (response: any) => {                           //next() callback
-          console.log('response received')
-         return response;
-        },
-       );
+    readonly data$: Observable<readonly ListChapter[]> =this.chapterService.getChapters();
 
     onEnabled(enabled: readonly string[]): void {
         this.enabled = enabled;
@@ -139,25 +98,19 @@ throw new Error('Method not implemented.');
         return !!this.search && TUI_DEFAULT_MATCHER(value, this.search);
     }
 
-    getAge(user: Chapter): number {
-        return getAge(user);
+    getAge(chapter: Chapter): number {
+        return getId(chapter);
     }
 
     
 }
 
-function sortBy(key: 'age' | 'dob' | 'name', direction: -1 | 1): TuiComparator<Chapter> {
-    return (a, b) =>
-        key === 'age'
-            ? direction * tuiDefaultSort(getAge(a), getAge(b))
-            : direction * tuiDefaultSort(a[key], b[key]);
+function sortBy(key: 'id' | 'title', direction: -1 | 1): TuiComparator<Chapter> {
+    return (a, b) => tuiDefaultSort(a[key], b[key]);
 }
 
-function getAge({dob}: Chapter): number {
-    const years = TODAY.year - dob.year;
-    const months = TODAY.month - dob.month;
-    const days = TODAY.day - dob.day;
-    const offset = tuiToInt(months > 0 || (!months && days > 9));
+function getId({id}: Chapter): number {
+    
 
-    return years + offset;
+    return id;
 }
