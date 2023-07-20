@@ -2,13 +2,15 @@
 using System.Net.Http.Headers;
 using System.Text.Json;
 using System.Text;
+using Microsoft.AspNetCore.Authorization;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Book_Guide_MVC.Services
 {
 
-  
+
+    [AllowAnonymous]
     [Route("api/[controller]")]
     [ApiController]
     public class ChatGPTServiceController : ControllerBase
@@ -47,6 +49,7 @@ namespace Book_Guide_MVC.Services
         /// </summary>
         /// <returns></returns>
         [HttpGet]
+      
         [Route("GetChapters")]
         public async Task<IEnumerable<SuggestionsViewModel>> GetChaptersAsync(string question)
         {
@@ -90,7 +93,7 @@ namespace Book_Guide_MVC.Services
         private async Task<IEnumerable<SuggestionsViewModel>?> CallChatGPTExternalAPI(string question)
         {
             HttpClient client = new HttpClient();
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "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");
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "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");
 
             var request = new OpenAIRequest
             {
