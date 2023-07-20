@@ -1,14 +1,11 @@
 import { Action, createReducer, on } from '@ngrx/store';
-
 import * as AuthActions from './auth.actions';
 import { AuthState, TokenStatus } from './auth.models';
-
 export const AUTH_FEATURE_KEY = 'auth';
 
 export interface AuthPartialState {
   readonly [AUTH_FEATURE_KEY]: AuthState;
 }
-
 export const initialState: AuthState = {
   isLoggedIn: false,
   user: undefined,
@@ -20,7 +17,6 @@ export const initialState: AuthState = {
 
 const reducer = createReducer(
   initialState,
-
   // Login
   on(
     AuthActions.loginRequest,
