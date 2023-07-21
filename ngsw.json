@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1689941651524,
+  "timestamp": 1689941811747,
   "index": "https://icpmtech.github.io/Book-Mastering/index.html",
   "assetGroups": [
     {
@@ -15,7 +15,7 @@
         "https://icpmtech.github.io/Book-Mastering/434.1efdcc2fc51fd1d0.js",
         "https://icpmtech.github.io/Book-Mastering/520.98fc7ac9e7fcd42e.js",
         "https://icpmtech.github.io/Book-Mastering/679.548904685ee24db1.js",
-        "https://icpmtech.github.io/Book-Mastering/731.0aef84a970cde00e.js",
+        "https://icpmtech.github.io/Book-Mastering/731.0f8aaa6572ba93ca.js",
         "https://icpmtech.github.io/Book-Mastering/758.aa57941637b40e17.js",
         "https://icpmtech.github.io/Book-Mastering/830.4dc88c13c1682008.js",
         "https://icpmtech.github.io/Book-Mastering/common.1e38ca1ef30abba1.js",
@@ -24,7 +24,7 @@
         "https://icpmtech.github.io/Book-Mastering/main.c6f88b86db05dcfa.js",
         "https://icpmtech.github.io/Book-Mastering/manifest.webmanifest",
         "https://icpmtech.github.io/Book-Mastering/polyfills.7f46f2bb3d061e89.js",
-        "https://icpmtech.github.io/Book-Mastering/runtime.0aaf781f940a96f6.js",
+        "https://icpmtech.github.io/Book-Mastering/runtime.d44f33e6d24288ab.js",
         "https://icpmtech.github.io/Book-Mastering/styles.bec4be06b4b93be0.css"
       ],
       "patterns": []
@@ -987,7 +987,7 @@
     "https://icpmtech.github.io/Book-Mastering/434.1efdcc2fc51fd1d0.js": "ce32a13f113e4612185c465050751e4d24bfa79e",
     "https://icpmtech.github.io/Book-Mastering/520.98fc7ac9e7fcd42e.js": "50f582017c8845fa55de6e194a47c8738dc84ddd",
     "https://icpmtech.github.io/Book-Mastering/679.548904685ee24db1.js": "8c4670a795bd8e196f0f518e32b0dda9d67585c4",
-    "https://icpmtech.github.io/Book-Mastering/731.0aef84a970cde00e.js": "80f22cecf83f1a23a62cdec1f0e7f8b4432c542e",
+    "https://icpmtech.github.io/Book-Mastering/731.0f8aaa6572ba93ca.js": "c62cc6428608399e217539b9877e5246c60d3324",
     "https://icpmtech.github.io/Book-Mastering/758.aa57941637b40e17.js": "4d57661a86d09aeda0efb4286e11693fe34adc87",
     "https://icpmtech.github.io/Book-Mastering/830.4dc88c13c1682008.js": "a2c45b2f48952e50945170a930a51dfa6b88c5bb",
     "https://icpmtech.github.io/Book-Mastering/assets/OneSignalSDKWorker.js": "2a04201028527d0db7532997f5c51de0291d5b6f",
@@ -1932,11 +1932,11 @@
     "https://icpmtech.github.io/Book-Mastering/assets/taiga-ui/icons/tuiIconZoomOutLarge.svg": "d613bf626b2bce958ebf71e3c6cf0d2ed0b8a518",
     "https://icpmtech.github.io/Book-Mastering/common.1e38ca1ef30abba1.js": "8f413ff4f42a6d09ddcedcc77ddd8d5310a4c28d",
     "https://icpmtech.github.io/Book-Mastering/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "https://icpmtech.github.io/Book-Mastering/index.html": "9e73753b9b16878ff60c26cdfa5695c558b94951",
+    "https://icpmtech.github.io/Book-Mastering/index.html": "6eb4fd7a7dc8f57e4463f2f3fa5485007eab46c0",
     "https://icpmtech.github.io/Book-Mastering/main.c6f88b86db05dcfa.js": "dbe137ba3500161dd087ac124213c67be4e37d44",
     "https://icpmtech.github.io/Book-Mastering/manifest.webmanifest": "850517ce0063e40a73c46a6f979f07140d6b2670",
     "https://icpmtech.github.io/Book-Mastering/polyfills.7f46f2bb3d061e89.js": "3ae61e686e7afb191d100a0454377257bcd0116a",
-    "https://icpmtech.github.io/Book-Mastering/runtime.0aaf781f940a96f6.js": "8dac3b822d20ef2a529c353ed768c64877d87ad5",
+    "https://icpmtech.github.io/Book-Mastering/runtime.d44f33e6d24288ab.js": "02ef6400b61c4e28ecf6179ffa890617541975b5",
     "https://icpmtech.github.io/Book-Mastering/styles.bec4be06b4b93be0.css": "0f756cca9fba693742add7ea363eea5bca295997"
   },
   "navigationUrls": [
