@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1689942313662,
+  "timestamp": 1689942428834,
   "index": "https://icpmtech.github.io/Book-Mastering/index.html",
   "assetGroups": [
     {
@@ -21,7 +21,7 @@
         "https://icpmtech.github.io/Book-Mastering/common.1e38ca1ef30abba1.js",
         "https://icpmtech.github.io/Book-Mastering/favicon.ico",
         "https://icpmtech.github.io/Book-Mastering/index.html",
-        "https://icpmtech.github.io/Book-Mastering/main.c6f88b86db05dcfa.js",
+        "https://icpmtech.github.io/Book-Mastering/main.9f8bd725515f80bf.js",
         "https://icpmtech.github.io/Book-Mastering/manifest.webmanifest",
         "https://icpmtech.github.io/Book-Mastering/polyfills.7f46f2bb3d061e89.js",
         "https://icpmtech.github.io/Book-Mastering/runtime.b1dfd73e8b747939.js",
@@ -1932,8 +1932,8 @@
     "https://icpmtech.github.io/Book-Mastering/assets/taiga-ui/icons/tuiIconZoomOutLarge.svg": "d613bf626b2bce958ebf71e3c6cf0d2ed0b8a518",
     "https://icpmtech.github.io/Book-Mastering/common.1e38ca1ef30abba1.js": "8f413ff4f42a6d09ddcedcc77ddd8d5310a4c28d",
     "https://icpmtech.github.io/Book-Mastering/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "https://icpmtech.github.io/Book-Mastering/index.html": "f953da25102e68ba7fb03f6d0792ed597a1abbde",
-    "https://icpmtech.github.io/Book-Mastering/main.c6f88b86db05dcfa.js": "dbe137ba3500161dd087ac124213c67be4e37d44",
+    "https://icpmtech.github.io/Book-Mastering/index.html": "1e7b53b2bc0c94a634b277fd8d810c12165b3470",
+    "https://icpmtech.github.io/Book-Mastering/main.9f8bd725515f80bf.js": "b9fcebe53dfa24d9e8d47f37bf0b22fc9d362dcf",
     "https://icpmtech.github.io/Book-Mastering/manifest.webmanifest": "850517ce0063e40a73c46a6f979f07140d6b2670",
     "https://icpmtech.github.io/Book-Mastering/polyfills.7f46f2bb3d061e89.js": "3ae61e686e7afb191d100a0454377257bcd0116a",
     "https://icpmtech.github.io/Book-Mastering/runtime.b1dfd73e8b747939.js": "7603f685bd7475b2673d3c4bf894163baeef3263",
