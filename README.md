@@ -1,6 +1,6 @@
 # Mastering of Power of ASP.NET Core v7.0 and Angular v16
 Mastering of Power of ASP.NET Core 7.0 and Angular 16 A Comprehensive Guide
-Practical Mastery: Real-World Full Stack Project in ASP.NET 7.0 and Angular v16. All the concpts aroun PWAs, Deploy, and other... 
+Practical Mastery: Real-World Full Stack Project in ASP.NET 7.0 and Angular v16. All the concpts around PWAs, Deploy, and other... 
 By Pedro Martins
 
 ## Table of Contents
