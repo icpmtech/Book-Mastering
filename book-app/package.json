@@ -8,7 +8,7 @@
         "watch": "ng build --watch --configuration development",
         "test": "ng test",
         "predeploy": "ng build --configuration production  --base-href=https://icpmtech.github.io/Book-Mastering/",
-        "deploy": "npx gh-pages -d dist/book-app",
+        "deploy": "npx gh-pages -d docs/book-app",
         "lint": "ng lint"
     },
     "private": true,
