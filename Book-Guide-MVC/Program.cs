@@ -10,7 +10,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.CodeAnalysis;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-
+using NuGet.Configuration;
+using Microsoft.Extensions.Configuration;
 namespace Book_Guide_MVC
 {
     public class Program
@@ -21,7 +22,11 @@ namespace Book_Guide_MVC
         {
              string CORSOpenPolicy = "OpenCORSPolicy";
             var builder = WebApplication.CreateBuilder(args);
+          
 
+           
+
+           
             builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme,
         options => {
@@ -49,7 +54,7 @@ namespace Book_Guide_MVC
 
             // Add EF services to the services container.
             builder.Services.AddDbContext<BookDbContext>(
-        options => options.UseSqlServer("name=ConnectionStrings:DefaultConnection"));
+            options => options.UseSqlServer("name=ConnectionStrings:DefaultConnection"));
             builder.Services.AddControllersWithViews();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen(c =>

@@ -3,6 +3,8 @@ using System.Net.Http.Headers;
 using System.Text.Json;
 using System.Text;
 using Microsoft.AspNetCore.Authorization;
+using System.Configuration;
+using NuGet.Configuration;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -16,9 +18,11 @@ namespace Book_Guide_MVC.Services
     public class ChatGPTServiceController : ControllerBase
     {
         private ILogger<ChatGPTServiceController> _logger;
-        public ChatGPTServiceController(ILogger<ChatGPTServiceController> logger)
+        private IConfiguration _configuration;
+        public ChatGPTServiceController(ILogger<ChatGPTServiceController> logger, IConfiguration configuration)
         {
             _logger = logger;
+            this._configuration = configuration;
         }
 
         // GET: api/<ChapGPTServiceController>
@@ -93,7 +97,8 @@ namespace Book_Guide_MVC.Services
         private async Task<IEnumerable<SuggestionsViewModel>?> CallChatGPTExternalAPI(string question)
         {
             HttpClient client = new HttpClient();
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "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");
+            string openAPIToken = _configuration["Settings:OpenAPIToken"];
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", openAPIToken);
 
             var request = new OpenAIRequest
             {
@@ -117,6 +122,6 @@ namespace Book_Guide_MVC.Services
 
       }
 
-
+    
 
 }
